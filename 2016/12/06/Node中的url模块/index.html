@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Node中的url模块 | Welcome | 简单不先于复杂，而是在复杂之后</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Node.js">
+    <meta name="description" content="在使用node时，通常需要使用一些第三方包，其实node有一些核心模块可以直接使用。
+node的核心模块node 的核心模块path：处理文件路径。fs：操作文件系统。child_process：新建子进程。util：提供一系列实用小工具。http：提供HTTP服务器功能。url：用于解析URL。querystring：解析URL中的查询字符串。crypto：提供加密和解密功能。其他
+url模块u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node中的url模块">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/Node中的url模块/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="在使用node时，通常需要使用一些第三方包，其实node有一些核心模块可以直接使用。
+node的核心模块node 的核心模块path：处理文件路径。fs：操作文件系统。child_process：新建子进程。util：提供一系列实用小工具。http：提供HTTP服务器功能。url：用于解析URL。querystring：解析URL中的查询字符串。crypto：提供加密和解密功能。其他
+url模块u">
+<meta property="og:updated_time" content="2017-02-24T12:45:30.500Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node中的url模块">
+<meta name="twitter:description" content="在使用node时，通常需要使用一些第三方包，其实node有一些核心模块可以直接使用。
+node的核心模块node 的核心模块path：处理文件路径。fs：操作文件系统。child_process：新建子进程。util：提供一系列实用小工具。http：提供HTTP服务器功能。url：用于解析URL。querystring：解析URL中的查询字符串。crypto：提供加密和解密功能。其他
+url模块u">
+    
+        <link rel="alternative" href="/atom.xml" title="Welcome" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张策</h5>
+          <a href="mailto:79_qijiu@sina.com" title="79_qijiu@sina.com" class="mail">79_qijiu@sina.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/38894403" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/ispoiu" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Node中的url模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Node中的url模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-06T03:23:51.000Z" itemprop="datePublished" class="page-time">
+  2016-12-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Node-js/">Node.js</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#node的核心模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">node的核心模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#url模块"><span class="post-toc-number">2.</span> <span class="post-toc-text">url模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#url模块的三种方法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">url模块的三种方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#url使用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">url使用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Node中的url模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Node中的url模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年12月06日 11:23" datetime="2016-12-06T03:23:51.000Z"  itemprop="datePublished">2016-12-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Node-js/">Node.js</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <pre><code>在使用node时，通常需要使用一些第三方包，其实node有一些核心模块可以直接使用。
+</code></pre><h2 id="node的核心模块"><a href="#node的核心模块" class="headerlink" title="node的核心模块"></a>node的核心模块</h2><p>node 的核心模块<br>path：处理文件路径。<br>fs：操作文件系统。<br>child_process：新建子进程。<br>util：提供一系列实用小工具。<br>http：提供HTTP服务器功能。<br>url：用于解析URL。<br>querystring：解析URL中的查询字符串。<br>crypto：提供加密和解密功能。<br>其他</p>
+<h2 id="url模块"><a href="#url模块" class="headerlink" title="url模块"></a>url模块</h2><h3 id="url模块的三种方法"><a href="#url模块的三种方法" class="headerlink" title="url模块的三种方法"></a>url模块的三种方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1.url.parse(str,<span class="literal">true</span>) //将字符串转成对象,第二个参数默认为<span class="literal">false</span>，为<span class="literal">true</span>时，返回的url对象中，query的属性为一个对象。</div><div class="line">2.url.format(urlObj) //用于将对象转成字符串</div><div class="line">3.url.resolve(from,to)</div><div class="line">	url.resolve(<span class="string">"http://whitemu.com"</span>,<span class="string">"gulu"</span>);</div><div class="line">	/*</div><div class="line">	返回值：</div><div class="line">	<span class="string">'http://whitemu.com/gulu'</span></div><div class="line">	*/</div></pre></td></tr></table></figure>
+<h3 id="url使用"><a href="#url使用" class="headerlink" title="url使用"></a>url使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var url = require(<span class="string">'url'</span>);</div><div class="line">var str = <span class="string">'http://poiu:123@127.0.0.1:3000/?name=tom#a'</span>;</div><div class="line">var urlObj = url.parse(str,<span class="literal">true</span>); </div><div class="line">console.log(urlObj);</div><div class="line">/*</div><div class="line"> protocol: <span class="string">'http:'</span>, 协议</div><div class="line"> slashes: <span class="literal">true</span>, 是否有//</div><div class="line"> auth: <span class="string">'poiu:123'</span>, 用户名和密码</div><div class="line"> host: <span class="string">'127.0.0.1:3000'</span>, 主机</div><div class="line"> port: <span class="string">'3000'</span>, 端口</div><div class="line"> hostname: <span class="string">'127.0.0.1'</span>,域名/IP地址</div><div class="line"> <span class="built_in">hash</span>: <span class="string">'#a'</span>, 片断标识符 指向HTML页面某个DOM元素的ID</div><div class="line"> search: <span class="string">'?name=tom'</span>, ?+查询字符串</div><div class="line"> query: &#123;name:<span class="string">'tom'</span>&#125;,查询字符串</div><div class="line"> pathname: <span class="string">'/'</span>, 端口号和？中间的那部分</div><div class="line"> path: <span class="string">'/2016jsnode?name=tom'</span>, pathname+search</div><div class="line"> href: <span class="string">'http://poiu:123@127.0.0.1:3000/?name=tom#a'</span> 原始的URL</div><div class="line"> */</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-24T12:45:30.500Z" itemprop="dateUpdated">2017年2月24日 20:45</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2016/12/06/Node中的url模块/" target="_blank" rel="external">http://yoursite.com/2016/12/06/Node中的url模块/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="张策">
+            张策
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/06/Node中的url模块/&title=《Node中的url模块》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/06/Node中的url模块/&title=《Node中的url模块》 — Welcome&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/06/Node中的url模块/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node中的url模块》 — Welcome&url=http://yoursite.com/2016/12/06/Node中的url模块/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/06/Node中的url模块/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/06/23/Github访问慢的问题/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Github访问慢的问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="Node中的url模块" data-title="Node中的url模块" data-url="http://yoursite.com/2016/12/06/Node中的url模块/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'38894403', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Welcome &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/06/Node中的url模块/&title=《Node中的url模块》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/06/Node中的url模块/&title=《Node中的url模块》 — Welcome&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/06/Node中的url模块/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node中的url模块》 — Welcome&url=http://yoursite.com/2016/12/06/Node中的url模块/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/06/Node中的url模块/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3a3Y4CIQwGUN//pd1kb13ZrwVNgMPVZPyB4yS1tDwe8Xj+jtc7ryN/9d0s715dMDAwMLZlPIfjdeL8enwn+cmStWFgYNzDyL9u/Kkq791y87VhYGBgjK/HiV01ZazOhYGBgZGnaFHqNp2GYmBgYOTls15w7M3ykb04BgbGhoxqY+Cb1x/sb2BgYGzCmE/18qL/OIxOrQoDA+NoxvggRX7kImke5MllsyGBgYFxNCMvrvXytDzgjoNv8kNjYGCcyqgmf6vCbq9w9s9zwMDAOI6RLyiZrJcaVsNrefuKgYGxOSOfIGdXt6bVberU/wYGBsaGjF5oS9K73kGKZkDHwMC4gDFfIOs1QWcapVEnFgMD4whGNbD2AuJMWW3cTMXAwLiN0TtmMR9MeztvDAyM2xj5wYv8/WubDTkbAwPjHkZvudWDF3njczEJAwNjK0bvwzOJ3apmwx9VQwwMjAsYM4lgtamQp57JQTEMDIyzGXl7cn6L22uIFgI9BgbGoYwkXM5vdKvscZguPwcMDIwjGPmdXuEsTx/zgB5luBgYGEcweqWuVYckqiG+cIAVAwPjIMazOPJyWHWzmm9lC88BAwPjCMaqrWmVVy3n5X8MGBgYpzKSINtrD3w1fcTAwLiAsSrI5oBq7C/XDjEwMK5k9NK7JMmrhv6okYmBgXExo1cCmymcRRgMDIwLGGuL9ck784Ae3cfAwDia0dtAVoNp73DY4kYmBgbGfowfFJbbGbbjHSkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

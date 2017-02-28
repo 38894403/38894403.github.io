@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Welcome</title>
-  
+  <subtitle>简单不先于复杂，而是在复杂之后</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-24T10:11:00.522Z</updated>
+  <updated>2017-02-24T12:45:30.500Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,49 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Git入门指南</title>
-    <link href="http://yoursite.com/2017/02/06/Git%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"/>
-    <id>http://yoursite.com/2017/02/06/Git入门指南/</id>
-    <published>2017-02-06T13:23:51.000Z</published>
-    <updated>2017-02-24T10:11:00.522Z</updated>
+    <title>Node中的url模块</title>
+    <link href="http://yoursite.com/2016/12/06/Node%E4%B8%AD%E7%9A%84url%E6%A8%A1%E5%9D%97/"/>
+    <id>http://yoursite.com/2016/12/06/Node中的url模块/</id>
+    <published>2016-12-06T03:23:51.000Z</published>
+    <updated>2017-02-24T12:45:30.500Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>在使用node时，通常需要使用一些第三方包，其实node有一些核心模块可以直接使用。
+</code></pre><h2 id="node的核心模块"><a href="#node的核心模块" class="headerlink" title="node的核心模块"></a>node的核心模块</h2><p>node 的核心模块<br>path：处理文件路径。<br>fs：操作文件系统。<br>child_process：新建子进程。<br>util：提供一系列实用小工具。<br>http：提供HTTP服务器功能。<br>url：用于解析URL。<br>querystring：解析URL中的查询字符串。<br>crypto：提供加密和解密功能。<br>其他</p>
+<h2 id="url模块"><a href="#url模块" class="headerlink" title="url模块"></a>url模块</h2><h3 id="url模块的三种方法"><a href="#url模块的三种方法" class="headerlink" title="url模块的三种方法"></a>url模块的三种方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1.url.parse(str,<span class="literal">true</span>) //将字符串转成对象,第二个参数默认为<span class="literal">false</span>，为<span class="literal">true</span>时，返回的url对象中，query的属性为一个对象。</div><div class="line">2.url.format(urlObj) //用于将对象转成字符串</div><div class="line">3.url.resolve(from,to)</div><div class="line">	url.resolve(<span class="string">"http://whitemu.com"</span>,<span class="string">"gulu"</span>);</div><div class="line">	/*</div><div class="line">	返回值：</div><div class="line">	<span class="string">'http://whitemu.com/gulu'</span></div><div class="line">	*/</div></pre></td></tr></table></figure>
+<h3 id="url使用"><a href="#url使用" class="headerlink" title="url使用"></a>url使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var url = require(<span class="string">'url'</span>);</div><div class="line">var str = <span class="string">'http://poiu:123@127.0.0.1:3000/?name=tom#a'</span>;</div><div class="line">var urlObj = url.parse(str,<span class="literal">true</span>); </div><div class="line">console.log(urlObj);</div><div class="line">/*</div><div class="line"> protocol: <span class="string">'http:'</span>, 协议</div><div class="line"> slashes: <span class="literal">true</span>, 是否有//</div><div class="line"> auth: <span class="string">'poiu:123'</span>, 用户名和密码</div><div class="line"> host: <span class="string">'127.0.0.1:3000'</span>, 主机</div><div class="line"> port: <span class="string">'3000'</span>, 端口</div><div class="line"> hostname: <span class="string">'127.0.0.1'</span>,域名/IP地址</div><div class="line"> <span class="built_in">hash</span>: <span class="string">'#a'</span>, 片断标识符 指向HTML页面某个DOM元素的ID</div><div class="line"> search: <span class="string">'?name=tom'</span>, ?+查询字符串</div><div class="line"> query: &#123;name:<span class="string">'tom'</span>&#125;,查询字符串</div><div class="line"> pathname: <span class="string">'/'</span>, 端口号和？中间的那部分</div><div class="line"> path: <span class="string">'/2016jsnode?name=tom'</span>, pathname+search</div><div class="line"> href: <span class="string">'http://poiu:123@127.0.0.1:3000/?name=tom#a'</span> 原始的URL</div><div class="line"> */</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
+      &lt;pre&gt;&lt;code&gt;在使用node时，通常需要使用一些第三方包，其实node有一些核心模块可以直接使用。
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;node的核心模块&quot;&gt;&lt;a href=&quot;#node的核心模块&quot; class=&quot;headerlink&quot; title=&quot;node的核心
+    
     </summary>
     
-      <category term="Hexo教程" scheme="http://yoursite.com/categories/Hexo%E6%95%99%E7%A8%8B/"/>
+      <category term="Node.js" scheme="http://yoursite.com/categories/Node-js/"/>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+      <category term="Node.js" scheme="http://yoursite.com/tags/Node-js/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2017/02/06/hello-world/"/>
-    <id>http://yoursite.com/2017/02/06/hello-world/</id>
-    <published>2017-02-06T13:12:50.923Z</published>
-    <updated>2017-02-06T13:12:50.923Z</updated>
+    <title>Github访问慢的问题</title>
+    <link href="http://yoursite.com/2016/06/23/Github%E8%AE%BF%E9%97%AE%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/06/23/Github访问慢的问题/</id>
+    <published>2016-06-23T06:54:12.000Z</published>
+    <updated>2017-02-24T12:59:14.029Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>有时候访问Github会加载很长时间，或者干脆css样式加载不出来，网上看了几篇文章，统一的解释是github的CDN被污染了(毕竟是国外网站，出点问题很正常)</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p> 有vpn服务的可以直接使用vpn，没有vpn的，可以绕过dns解析，在本地直接绑定host。打开dns查询工具网站<br> <a href="http://tool.chinaz.com/dns " target="_blank" rel="external">http://tool.chinaz.com/dns </a><br> 输入github的官网，会查询出该域名的解析<br> 选取一个TTL值最小的ip，直接绑定到hosts文件便可解决，比如我选择192.30.253.113，TTL值为22</p>
+<p> 在hosts文件末尾添加<br> 103.245.222.249 github.global.ssl.fastly.net<br> 103.245.222.133 assets-cdn.github.com</p>
+<p> 然后再访问Github,问题解决</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;有时候访问Github会加载很长时间，或者干脆css样式加载不出来，网上看了几篇文章，统一的解释是github的CDN被污染了(毕竟是国外网站，出点问题很正常)&lt;/p&gt;
+&lt;h3 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; tit
     
     </summary>
     
+      <category term="网络问题" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/"/>
+    
+    
+      <category term="网络问题" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
