@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>初学Bootstrap | Zhangce | 简单不先于复杂，而是在复杂之后</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Bootstrap">
+    <meta name="description" content="bootstrap 的学习非常简单，并且它所提供的样式又非常精美。只要稍微简单的学习就可以制作出漂亮的页面。
+Bootstrap引用bootstrap提供了三种类型的下载：
+
+用于生产环境的 Bootstrap
+　　编译并压缩后的 CSS、JavaScript 和字体文件。不包含文档和源码文件。
+Bootstrap 源码
+　　Less、JavaScript 和 字体文件的源码，并且带有文档。需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学Bootstrap">
+<meta property="og:url" content="http://yoursite.com/2016/05/02/初学Bootstrap/index.html">
+<meta property="og:site_name" content="Zhangce">
+<meta property="og:description" content="bootstrap 的学习非常简单，并且它所提供的样式又非常精美。只要稍微简单的学习就可以制作出漂亮的页面。
+Bootstrap引用bootstrap提供了三种类型的下载：
+
+用于生产环境的 Bootstrap
+　　编译并压缩后的 CSS、JavaScript 和字体文件。不包含文档和源码文件。
+Bootstrap 源码
+　　Less、JavaScript 和 字体文件的源码，并且带有文档。需要">
+<meta property="og:image" content="http://yoursite.com/2016/05/02/初学Bootstrap/图标.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/05/02/初学Bootstrap/按钮.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/05/02/初学Bootstrap/输入框.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/05/02/初学Bootstrap/导航.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/05/02/初学Bootstrap/警告框.jpg">
+<meta property="og:image" content="http://yoursite.com/2016/05/02/初学Bootstrap/进度条.jpg">
+<meta property="og:updated_time" content="2017-03-01T07:21:33.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学Bootstrap">
+<meta name="twitter:description" content="bootstrap 的学习非常简单，并且它所提供的样式又非常精美。只要稍微简单的学习就可以制作出漂亮的页面。
+Bootstrap引用bootstrap提供了三种类型的下载：
+
+用于生产环境的 Bootstrap
+　　编译并压缩后的 CSS、JavaScript 和字体文件。不包含文档和源码文件。
+Bootstrap 源码
+　　Less、JavaScript 和 字体文件的源码，并且带有文档。需要">
+<meta name="twitter:image" content="http://yoursite.com/2016/05/02/初学Bootstrap/图标.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Zhangce" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张策</h5>
+          <a href="mailto:79_qijiu@sina.com" title="79_qijiu@sina.com" class="mail">79_qijiu@sina.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/38894403" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/ispoiu" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">初学Bootstrap</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">初学Bootstrap</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-02T07:20:01.000Z" itemprop="datePublished" class="page-time">
+  2016-05-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Bootstrap引用"><span class="post-toc-number">1.</span> <span class="post-toc-text">Bootstrap引用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#图标字体"><span class="post-toc-number">2.</span> <span class="post-toc-text">图标字体</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#按钮"><span class="post-toc-number">3.</span> <span class="post-toc-text">按钮</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下拉菜单"><span class="post-toc-number">4.</span> <span class="post-toc-text">下拉菜单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入框"><span class="post-toc-number">5.</span> <span class="post-toc-text">输入框</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导航栏"><span class="post-toc-number">6.</span> <span class="post-toc-text">导航栏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单"><span class="post-toc-number">7.</span> <span class="post-toc-text">表单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#警告框"><span class="post-toc-number">8.</span> <span class="post-toc-text">警告框</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进度条"><span class="post-toc-number">9.</span> <span class="post-toc-text">进度条</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-初学Bootstrap"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">初学Bootstrap</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年05月02日 15:20" datetime="2016-05-02T07:20:01.000Z"  itemprop="datePublished">2016-05-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>bootstrap 的学习非常简单，并且它所提供的样式又非常精美。只要稍微简单的学习就可以制作出漂亮的页面。</p>
+<h2 id="Bootstrap引用"><a href="#Bootstrap引用" class="headerlink" title="Bootstrap引用"></a>Bootstrap引用</h2><p>bootstrap提供了三种类型的下载：</p>
+<hr>
+<p>用于生产环境的 Bootstrap</p>
+<p>　　编译并压缩后的 CSS、JavaScript 和字体文件。不包含文档和源码文件。</p>
+<p>Bootstrap 源码</p>
+<p>　　Less、JavaScript 和 字体文件的源码，并且带有文档。需要 Less 编译器和一些设置工作。</p>
+<p>Sass</p>
+<p>　　这是 Bootstrap 从 Less 到 Sass 的源码移植项目，用于快速地在 Rails、Compass 或 只针对 Sass 的项目中引入。</p>
+<hr>
+<p>其实我们不用下载bootstrap也可以使用它：</p>
+<p>Bootstrap 中文网 为 Bootstrap 专门构建了自己的免费 CDN 加速服务。基于国内云厂商的 CDN 服务，访问速度更快、加速效果更明显、没有速度和带宽限制、永久免费。<br>下面是base.html<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"zh-CN"</span>&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge"</span>&gt;</div><div class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</div><div class="line">    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</div><div class="line">    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;</div><div class="line"></div><div class="line">    &lt;!-- Bootstrap --&gt;</div><div class="line">    &lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"</span>&gt;</div><div class="line">    </div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;你好，bootstrap！&lt;/h1&gt;</div><div class="line"></div><div class="line">    &lt;!-- jQuery (necessary <span class="keyword">for</span> Bootstrap<span class="string">'s JavaScript plugins) --&gt;</span></div><div class="line">    &lt;script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;</div><div class="line">    &lt;script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"&gt;&lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p> base.html中已经引入了bootstrap，将其保存，就可以使用bootstrap提供的样式了。</p>
+<h2 id="图标字体"><a href="#图标字体" class="headerlink" title="图标字体"></a>图标字体</h2><p>bootstrap默认提供了二百多个图标。我们可以通过span标签来使用这些图标：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;图标&lt;/h3&gt;   </div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-home"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-signal"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-cog"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-apple"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-trash"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-play-circle"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-headphones"</span>&gt;&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/图标.jpg" alt="图标" title="">
+                </div>
+                <div class="image-caption">图标</div>
+            </figure>
+<h2 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h2><p><button></button>标签用于创建按钮，bootstrap提供了丰富的按钮样式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;按钮&lt;/h3&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-default"</span>&gt;按钮&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-primary"</span>&gt;primary&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-success"</span>&gt;success&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-info"</span>&gt;info&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-warning"</span>&gt;warning&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-danger"</span>&gt;danger&lt;/button&gt;</div><div class="line">    </div><div class="line">    &lt;h3&gt;按钮尺寸&lt;/h3&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-default"</span>&gt;按钮&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-primary btn-lg"</span>&gt;primary&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-success btn-sm"</span>&gt;success&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-info btn-xs"</span>&gt;info&lt;/button&gt;</div><div class="line"></div><div class="line">    &lt;h3&gt;把图标显示在按钮里&lt;/h3&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-default"</span>&gt;&lt;span class=<span class="string">"glyphicon glyphicon-home"</span>&gt;&lt;/span&gt;&amp;nbsp;&amp;nbsp;按钮&lt;/button&gt;</div></pre></td></tr></table></figure></p>
+<p>按钮除了有默认的大小外，bootstrap还提供三个参数来调整按钮的大小，分别是：btn-lg、btn-sm和btn-xs。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/按钮.jpg" alt="按钮" title="">
+                </div>
+                <div class="image-caption">按钮</div>
+            </figure></p>
+<h2 id="下拉菜单"><a href="#下拉菜单" class="headerlink" title="下拉菜单"></a>下拉菜单</h2><p>　下拉菜单是最常见的交互之一，bootstrap提供了漂亮的样式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;下拉菜单&lt;/h3&gt;</div><div class="line">  &lt;div class=<span class="string">"dropdown"</span>&gt;</div><div class="line">    &lt;button class=<span class="string">"btn btn-primary dropdown-toggle"</span> <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">"dropdownMenu1"</span> data-toggle=<span class="string">"dropdown"</span> aria-expanded=<span class="string">"true"</span>&gt;</div><div class="line">      Dropdown</div><div class="line">      &lt;span class=<span class="string">"caret"</span>&gt;&lt;/span&gt;</div><div class="line">    &lt;/button&gt;</div><div class="line">    &lt;ul class=<span class="string">"dropdown-menu"</span> role=<span class="string">"menu"</span> aria-labelledby=<span class="string">"dropdownMenu1"</span>&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Action&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Another action&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Something <span class="keyword">else</span> here&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Separated link&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  &lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="输入框"><a href="#输入框" class="headerlink" title="输入框"></a>输入框</h2><p>通过<code>&lt;input&gt;&lt;/input&gt;</code>标签去创建输入框。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;输入框&lt;/h3&gt;</div><div class="line">    &lt;div class=<span class="string">"input-group"</span>&gt;</div><div class="line">      &lt;span class=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt;</div><div class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> placeholder=<span class="string">"username"</span>&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=<span class="string">"input-group"</span>&gt;</div><div class="line">      &lt;span class=<span class="string">"glyphicon glyphicon-lock"</span>&gt;&lt;/span&gt;</div><div class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"password"</span> placeholder=<span class="string">"password"</span>&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/输入框.jpg" alt="输入框" title="">
+                </div>
+                <div class="image-caption">输入框</div>
+            </figure>
+<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;导航栏&lt;/h3&gt;</div><div class="line">    &lt;nav class=<span class="string">"navbar navbar-inverse navbar-fixed-top"</span>&gt;</div><div class="line">        &lt;div id=<span class="string">"navbar"</span> class=<span class="string">"navbar-collapse collapse"</span>&gt;</div><div class="line">          &lt;ul class=<span class="string">"nav navbar-nav"</span>&gt;</div><div class="line">            &lt;li class=<span class="string">"active"</span>&gt;&lt;a href=<span class="string">"#"</span>&gt;Home&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li&gt;&lt;a href=<span class="string">"#about"</span>&gt;About&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li&gt;&lt;a href=<span class="string">"#contact"</span>&gt;Contact&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li class=<span class="string">"dropdown"</span>&gt;</div><div class="line">              &lt;a href=<span class="string">"#"</span> class=<span class="string">"dropdown-toggle"</span> data-toggle=<span class="string">"dropdown"</span> role=<span class="string">"button"</span> aria-expanded=<span class="string">"false"</span>&gt;Dropdown &lt;span class=<span class="string">"caret"</span>&gt;&lt;/span&gt;&lt;/a&gt;</div><div class="line">              &lt;ul class=<span class="string">"dropdown-menu"</span> role=<span class="string">"menu"</span>&gt;</div><div class="line">                &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Action&lt;/a&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Another action&lt;/a&gt;&lt;/li&gt;</div><div class="line">                &lt;li class=<span class="string">"divider"</span>&gt;&lt;/li&gt;</div><div class="line">                &lt;li class=<span class="string">"dropdown-header"</span>&gt;Nav header&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Separated link&lt;/a&gt;&lt;/li&gt;</div><div class="line">              &lt;/ul&gt;</div><div class="line">            &lt;/li&gt;</div><div class="line">          &lt;/ul&gt;</div><div class="line">        &lt;/div&gt;&lt;!--/.nav-collapse --&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/nav&gt;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/导航.jpg" alt="导航栏" title="">
+                </div>
+                <div class="image-caption">导航栏</div>
+            </figure>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;表单&lt;/h3&gt;</div><div class="line">   &lt;form&gt;</div><div class="line">   &lt;div class=<span class="string">"form-group"</span>&gt;</div><div class="line">     &lt;span class=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt;</div><div class="line">     &lt;input <span class="built_in">type</span>=<span class="string">"email"</span> id=<span class="string">"exampleInputEmail1"</span> placeholder=<span class="string">"Enter email"</span>&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;div class=<span class="string">"form-group"</span>&gt;</div><div class="line">     &lt;span class=<span class="string">"glyphicon glyphicon-lock"</span>&gt;&lt;/span&gt;</div><div class="line">     &lt;input <span class="built_in">type</span>=<span class="string">"password"</span> id=<span class="string">"exampleInputPassword1"</span> placeholder=<span class="string">"Password"</span>&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;div class=<span class="string">"form-group"</span>&gt;</div><div class="line">     &lt;label <span class="keyword">for</span>=<span class="string">"exampleInputFile"</span>&gt;File input&lt;/label&gt;</div><div class="line">     &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> id=<span class="string">"exampleInputFile"</span>&gt;</div><div class="line">     &lt;p class=<span class="string">"help-block"</span>&gt;Example block-level <span class="built_in">help</span> text here.&lt;/p&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;div class=<span class="string">"checkbox"</span>&gt;</div><div class="line">     &lt;label&gt;</div><div class="line">       &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span>&gt; Check me out</div><div class="line">     &lt;/label&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;button <span class="built_in">type</span>=<span class="string">"submit"</span> class=<span class="string">"btn btn-default"</span>&gt;Submit&lt;/button&gt;</div><div class="line"> &lt;/form&gt;</div></pre></td></tr></table></figure>
+<h2 id="警告框"><a href="#警告框" class="headerlink" title="警告框"></a>警告框</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;警告框&lt;/h3&gt;</div><div class="line">    &lt;div class=<span class="string">"alert alert-warning alert-dismissible"</span> role=<span class="string">"alert"</span>&gt;</div><div class="line">       &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"close"</span> data-dismiss=<span class="string">"alert"</span> aria-label=<span class="string">"Close"</span>&gt;&lt;span aria-hidden=<span class="string">"true"</span>&gt;&amp;<span class="built_in">times</span>;&lt;/span&gt;&lt;/button&gt;</div><div class="line">       &lt;strong&gt;Warning!&lt;/strong&gt; Better check yourself, you<span class="string">'re not looking too good.</span></div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-success" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;success!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-info" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;info!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-warning" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;warning!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-danger" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;danger!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/警告框.jpg" alt="警告框" title="">
+                </div>
+                <div class="image-caption">警告框</div>
+            </figure>
+<h2 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;进度条&lt;/h3&gt;</div><div class="line">    &lt;div class=<span class="string">"progress"</span>&gt;</div><div class="line">      &lt;div class=<span class="string">"progress-bar"</span> role=<span class="string">"progressbar"</span> aria-valuenow=<span class="string">"70"</span> aria-valuemin=<span class="string">"0"</span> aria-valuemax=<span class="string">"100"</span> style=<span class="string">"width: 60%;"</span>&gt;</div><div class="line">        70%</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/进度条.jpg" alt="进度条" title="">
+                </div>
+                <div class="image-caption">进度条</div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-01T07:21:33.023Z" itemprop="dateUpdated">2017年3月1日 15:21</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2016/05/02/初学Bootstrap/" target="_blank" rel="external">http://yoursite.com/2016/05/02/初学Bootstrap/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="张策">
+            张策
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/02/初学Bootstrap/&title=《初学Bootstrap》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/02/初学Bootstrap/&title=《初学Bootstrap》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/02/初学Bootstrap/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初学Bootstrap》 — Zhangce&url=http://yoursite.com/2016/05/02/初学Bootstrap/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/02/初学Bootstrap/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/06/02/JS中call()、apply()、bind()的区别/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS中call()、apply()、bind()的区别</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/04/02/利用border属性绘制简单图形/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">利用border属性绘制简单图形</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="初学Bootstrap" data-title="初学Bootstrap" data-url="http://yoursite.com/2016/05/02/初学Bootstrap/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'38894403', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Zhangce &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/05/02/初学Bootstrap/&title=《初学Bootstrap》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/05/02/初学Bootstrap/&title=《初学Bootstrap》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/02/初学Bootstrap/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初学Bootstrap》 — Zhangce&url=http://yoursite.com/2016/05/02/初学Bootstrap/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/02/初学Bootstrap/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3ayXKEMAxF0f7/nyZV2RLDfRJJBfl6RfUAPr1Qa/Dng9fxvc7X5JPntbrP+TMPLxkyZLyWcVyu6wesHrm6T+e5N/eUIUPGBow0dPLt8vBNgvLydRkyZMi4TOP64ZWnjzJkyJCRMnjQ5ImmDBkyZHSKWJIm8m3x64drcRkyZLyQ0S87f+/6j+YbMmTI+MeMWmGZlrV88FlbMmTImM1IUz2+afItUkjzO8iQIWM2g4wteajld+MD0ZgtQ4aMoQwSyDpjy1qByocKMmTImMogZWp6IKzWyk/3cFOLy5AhYxtGOjDotOFqSaEMGTJ2YKTHvEgJSrK1/lGMm96hDBkyxjFqbXqSAqbNO54g/rBPGTJkDGWkwa7fSuPfCsAyZMjYkpEetigeiQiL2DjgypAhYxyjn8yljbZWzV2MzTJkyHgrIw12/W3xNLF42EKGDBnjGLVWF383HXDGsVSGDBkbMGopIC9xO0G8+L8hQ4aMQQzeVuMFcO1YRjBxXe1BhgwZQxnXj0zTuFppWhseyJAhY08GL0Svg28aNPkQojgYkCFDxssZpKHPB5wpuPZj3QRrGTJkjGMc4aoNPp9KHJfhWIYMGaMZ/YyrFqbT4UFr6zJkyBjB6AdZflyjw5MhQ4aMTpDlr9SacWioIEOGDBlh+EuPjvHG3/JdGTJkyAgDK2mukZ8pmG/IkCFjAwYvYvm3SJDthF0ZMmTsw0gHA6RB1ppChAfOZMiQMZrxBcPZo4k+oFeiAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

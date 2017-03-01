@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-01T03:40:31.460Z</updated>
+  <updated>2017-03-01T08:25:14.845Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,30 +16,142 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test</title>
-    <link href="http://yoursite.com/2017/03/01/test/"/>
-    <id>http://yoursite.com/2017/03/01/test/</id>
-    <published>2017-03-01T03:37:27.000Z</published>
-    <updated>2017-03-01T03:40:31.460Z</updated>
+    <title>JavaScript总结</title>
+    <link href="http://yoursite.com/2017/01/16/JavaScript%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2017/01/16/JavaScript总结/</id>
+    <published>2017-01-16T13:33:51.000Z</published>
+    <updated>2017-03-01T08:25:14.845Z</updated>
     
-    <content type="html"><![CDATA[<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2017/03/01/test/1.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-]]></content>
+    <content type="html"><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JavaScript 是 弱类型 语言，但并不是没有类型，JavaScript可以识别下面 7 种不同类型的值：</p>
+<p>基本数据类型</p>
+<ul>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+<li>null</li>
+<li>undefined</li>
+<li>Symbol</li>
+</ul>
+<p>Object</p>
+<ul>
+<li>Array</li>
+<li>RegExp</li>
+<li>Date</li>
+<li>Math</li>
+<li>…<br>可以使用 <code>typeof</code>判断数据类型，操作符返回一个字符串，但并非返回的所有结果都符合预期<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">typeof <span class="literal">false</span> // <span class="string">"boolean"</span></div><div class="line">typeof .2 // <span class="string">"number"</span></div><div class="line">typeof NaN // <span class="string">"number"</span></div><div class="line">typeof <span class="string">''</span> // <span class="string">"string"</span></div><div class="line">typeof undefined // <span class="string">"undefined"</span></div><div class="line">typeof Symbol() // <span class="string">"symbol"</span></div><div class="line"></div><div class="line">typeof new Date() // <span class="string">"object"</span></div><div class="line">typeof [] // <span class="string">"object"</span></div><div class="line"></div><div class="line">typeof alert // <span class="string">"function"</span></div><div class="line"></div><div class="line">typeof null // <span class="string">"object"</span></div><div class="line">typeof not_defined_var // <span class="string">"undefined"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>在应用程序中，使用变量来来为值命名。变量的名称称为 <code>identifiers</code></p>
+<p>声明</p>
+<ul>
+<li>使用关键字 <code>var</code> ：函数作用域</li>
+<li>使用关键字 <code>let</code> ：块作用域 (block scope local variable)</li>
+<li>直接使用：全局作用域<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var global_var = 1;</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span> () &#123;</div><div class="line">  var fn_var = 2;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span>(fn_var &gt; 10)&#123;</div><div class="line">    <span class="built_in">let</span> block_var = 3;</div><div class="line">    global_var2 = 4; //全局作用域</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>只声明不赋值，变量的默认值是 <code>undefined</code></p>
+<p><code>const</code>关键字可以声明不可变变量，同样为块作用域。对不可变的理解在对象上的理解需要注意<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">const num = 1;</div><div class="line">const obj = &#123;</div><div class="line">  prop: <span class="string">'value'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">num = 2; // Uncaught TypeError: Assignment to constant variable.</div><div class="line">obj[<span class="string">'prop'</span>] = <span class="string">'value2'</span>;</div><div class="line"></div><div class="line">obj = []; // Uncaught TypeError: Assignment to constant variable.</div></pre></td></tr></table></figure></p>
+<p>变量提升</p>
+<p>JavaScript中可以引用稍后声明的变量，而不会引发异，这一概念称为变量声明提升(hoisting)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(a); // undefined</div><div class="line"></div><div class="line">var a = 2;</div></pre></td></tr></table></figure></p>
+<p>等同于<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a;</div><div class="line"></div><div class="line">console.log(a);</div><div class="line"></div><div class="line">a = 2;</div></pre></td></tr></table></figure></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>一个函数就是一个可以被外部代码调用(或者函数本身递归调用)的 子程序</p>
+<p>定义函数</p>
+<ul>
+<li>函数声明</li>
+<li>函数表达式</li>
+<li>Function 构造函数</li>
+<li>箭头函数<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;&#125;</div><div class="line"></div><div class="line">var fn = <span class="function"><span class="title">function</span></span>()&#123;&#125;</div><div class="line"></div><div class="line">var fn = new Function(arg1, arg2, ... argN, funcBody)</div><div class="line"></div><div class="line">var fn = (param) =&gt; &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>arguments</p>
+<ul>
+<li>arguments:  一个包含了传递给当前执行函数参数的类似于数组的对象</li>
+<li>arguments.length: 传给函数的参数的数目<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>() &#123;</div><div class="line">  <span class="built_in">return</span> arguments;</div><div class="line">&#125;</div><div class="line">foo(1, 2, 3); // Arguments[3] </div><div class="line">// &#123; <span class="string">"0"</span>: 1, <span class="string">"1"</span>: 2, <span class="string">"2"</span>: 3 &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>rest<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> foo(...args) &#123;</div><div class="line">  <span class="built_in">return</span> args;</div><div class="line">&#125;</div><div class="line">foo(1, 2, 3); // Array[3]</div><div class="line">// [1, 2, 3]</div><div class="line"></div><div class="line"><span class="keyword">function</span> fn(a, b, ...args)&#123;</div><div class="line">  <span class="built_in">return</span> args;</div><div class="line">&#125;</div><div class="line"></div><div class="line">fn(1, 2, 3, 4, 5); // Array[3]  </div><div class="line">// [3, 4, 5]</div></pre></td></tr></table></figure></p>
+<p>default</p>
+<p>函数的参数可以在定义的时候约定默认值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> fn (a = 2, b = 3) &#123;</div><div class="line">  <span class="built_in">return</span> a + b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">fn(2, 3); // 5</div><div class="line"></div><div class="line">fn(2); // 5</div><div class="line"></div><div class="line">fn(); // 5</div></pre></td></tr></table></figure></p>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>JavaScript 中对象是可变 键控集合 (keyed collections)</p>
+<p>定义对象</p>
+<ul>
+<li>字面量</li>
+<li>构造函数<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">  prop: <span class="string">'value'</span>,</div><div class="line">  fn: <span class="function"><span class="title">function</span></span>()&#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var date = new Date();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>构造函数</p>
+<p>构造函数和普通函数并没有区别，使用 <code>new</code> 关键字调用就是构造函数，使用构造函数可以 实例化 一个对象</p>
+<p>函数的返回值有两种可能</p>
+<ul>
+<li>显式调用 <code>return</code> 返回 <code>return</code> 后表达式的求值</li>
+<li>没有调用 <code>return</code> 返回 <code>undefined</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> People(name, age) &#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var people = new People(<span class="string">'Byron'</span>, 26);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>构造函数返回值</p>
+<ul>
+<li>没有返回值</li>
+<li>简单数据类型</li>
+<li>对象类型<br>前两种情况构造函数返回构造对象的实例，实例化对象正是利用的这个特性</li>
+</ul>
+<p>第三种构造函数和普通函数表现一致，返回 <code>return</code> 后表达式的结果</p>
+<p>prototype</p>
+<ul>
+<li>每个函数都有一个 <code>prototype</code> 的对象属性，对象内有一个 <code>constructor</code> 属性，默认指向函数本身</li>
+<li>每个对象都有一个 <code>__proto__</code>的属性，属相指向其父类型的 <code>prototype</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> Person(name) &#123;</div><div class="line">  this.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.print = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(this.name);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var p1 = new Person(<span class="string">'Byron'</span>);</div><div class="line">var p2 = new Person(<span class="string">'Casper'</span>);</div><div class="line"></div><div class="line">p1.print();</div><div class="line">p2.print();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="this-和作用域"><a href="#this-和作用域" class="headerlink" title="this 和作用域"></a>this 和作用域</h2><p>this 场景</p>
+<p>普通函数</p>
+<ul>
+<li>严格模式：undefined</li>
+<li>非严格模式: 全局对象</li>
+<li>Node: global</li>
+<li>浏览器: window<br>构造函数：对象的实例</li>
+</ul>
+<p>对象方法：对象本身</p>
+<p>call &amp; apply</p>
+<ul>
+<li>fn.call(context, arg1, arg2, …, argn)</li>
+<li>fn.apply(context, args)<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> isNumber(obj) &#123;</div><div class="line">  <span class="built_in">return</span> Object.prototype.toString.call(obj) === <span class="string">'[object Number]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Function.prototype.bind</p>
+<p><code>bind</code> 返回一个新函数，函数的作用域为 <code>bind</code> 参数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>() &#123;</div><div class="line">  this.i = 0;</div><div class="line"></div><div class="line">  <span class="built_in">set</span>Interval(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    console.log(this.i++);</div><div class="line">  &#125;.bind(this), 500)</div><div class="line">&#125;</div><div class="line"></div><div class="line">fn();</div></pre></td></tr></table></figure></p>
+<p>() =&gt; {}</p>
+<p>箭头函数是 ES6 提供的新特性，是简写的 函数表达式，拥有词法作用域和 <code>this</code> 值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>() &#123;</div><div class="line">  this.i = 0;</div><div class="line"></div><div class="line">  <span class="built_in">set</span>Interval(() =&gt; &#123;</div><div class="line">    console.log(this.i++);</div><div class="line">  &#125;, 500)</div><div class="line">&#125;</div><div class="line"></div><div class="line">fn();</div></pre></td></tr></table></figure></p>
+<p>##继承<br>在 JavaScript 的场景，继承有两个目标，子类需要得到父类的：</p>
+<ul>
+<li>对象的属性</li>
+<li>对象的方法<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> inherits(child, parent) &#123;</div><div class="line">  var _proptotype = Object.create(parent.prototype);</div><div class="line">  _proptotype.constructor = child.prototype.constructor;</div><div class="line">  child.prototype = _proptotype;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> People(name, age) &#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">People.prototype.getName = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  <span class="built_in">return</span> this.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> English(name, age, language) &#123;</div><div class="line">  People.call(this, name, age);</div><div class="line">  this.language = language;</div><div class="line">&#125;</div><div class="line"></div><div class="line">inherits(English, People);</div><div class="line"></div><div class="line">English.prototype.introduce = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'Hi, I am '</span> + this.getName());</div><div class="line">  console.log(<span class="string">'I speak '</span> + this.language);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> Chinese(name, age, language) &#123;</div><div class="line">  People.call(this, name, age);</div><div class="line">  this.language = language;</div><div class="line">&#125;</div><div class="line"></div><div class="line">inherits(Chinese, People);</div><div class="line"></div><div class="line">Chinese.prototype.introduce = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'你好，我是'</span> + this.getName());</div><div class="line">  console.log(<span class="string">'我说'</span> + this.language);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var en = new English(<span class="string">'Byron'</span>, 26, <span class="string">'English'</span>);</div><div class="line">var cn = new Chinese(<span class="string">'色拉油'</span>, 27, <span class="string">'汉语'</span>);</div><div class="line"></div><div class="line">en.introduce();</div><div class="line">cn.introduce();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ES6 class 与继承<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="string">"use strict"</span>;</div><div class="line"></div><div class="line">class People&#123;</div><div class="line">  constructor(name, age)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="title">getName</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span> this.name;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class English extends People&#123;</div><div class="line">  constructor(name, age, language)&#123;</div><div class="line">    super(name, age);</div><div class="line">    this.language = language;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="title">introduce</span></span>()&#123;</div><div class="line">    console.log(<span class="string">'Hi, I am '</span> + this.getName());</div><div class="line">    console.log(<span class="string">'I speak '</span> + this.language);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">let</span> en = new English(<span class="string">'Byron'</span>, 26, <span class="string">'English'</span>);</div><div class="line"></div><div class="line">en.introduce();</div></pre></td></tr></table></figure></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>label statement<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">loop:</div><div class="line">    <span class="keyword">for</span> (var i = 0; i &lt; 10; i++) &#123;</div><div class="line">      <span class="keyword">for</span> (var j = 0; j &lt; 5; j++) &#123;</div><div class="line">        console.log(j);</div><div class="line">        <span class="keyword">if</span> (j === 1) &#123;</div><div class="line">          <span class="built_in">break</span> loop;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">console.log(i);</div></pre></td></tr></table></figure></p>
+<p>语句与表达式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var x = &#123; a:1 &#125;;</div><div class="line"></div><div class="line">&#123; a:1 &#125;</div><div class="line"></div><div class="line">&#123; a:1, b:2 &#125;</div></pre></td></tr></table></figure></p>
+<p>立即执行函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">( <span class="function"><span class="title">function</span></span>() &#123;&#125;() );</div><div class="line">( <span class="function"><span class="title">function</span></span>() &#123;&#125; )();</div><div class="line">[ <span class="function"><span class="title">function</span></span>() &#123;&#125;() ];</div><div class="line"></div><div class="line">~ <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">! <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">+ <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">- <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line"></div><div class="line">delete <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">typeof <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">void <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">new <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">new <span class="function"><span class="title">function</span></span>() &#123;&#125;;</div><div class="line"></div><div class="line">var f = <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line"></div><div class="line">1, <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">1 ^ <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div><div class="line">1 &gt; <span class="function"><span class="title">function</span></span>() &#123;&#125;();</div></pre></td></tr></table></figure></p>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>高阶函数是把函数当做参数或者返回值是函数的函数</p>
+<p>回调函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[1, 2, 3, 4].forEach(<span class="keyword">function</span>(item)&#123;</div><div class="line">  console.log(item);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>闭包</p>
+<p>闭包由两部分组成</p>
+<ul>
+<li>函数</li>
+<li>环境：函数创建时作用域内的局部变量<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> makeCounter(init) &#123;</div><div class="line">  var init = init || 0;</div><div class="line"></div><div class="line">  <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span> ++init;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var counter = makeCounter(10);</div><div class="line"></div><div class="line">console.log(counter());</div><div class="line">console.log(counter());</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>典型错误<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var i = 0; i &lt; doms.length; i++) &#123;</div><div class="line">  doms.eq(i).on(<span class="string">'click'</span>, <span class="keyword">function</span> (ev) &#123;</div><div class="line">    console.log(i);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">​</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var i = 0; i &lt; doms.length; i++) &#123;</div><div class="line">  (<span class="keyword">function</span> (i) &#123;</div><div class="line">    doms.eq(i).on(<span class="string">'click'</span>, <span class="keyword">function</span> (ev) &#123;</div><div class="line">      console.log(i);</div><div class="line">    &#125;);</div><div class="line">  &#125;)(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;figure class=&quot;image-bubble&quot;&gt;
-                &lt;div class=&quot;img-lightbox&quot;&gt;
-                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
-                   
+      &lt;h2 id=&quot;数据类型&quot;&gt;&lt;a href=&quot;#数据类型&quot; class=&quot;headerlink&quot; title=&quot;数据类型&quot;&gt;&lt;/a&gt;数据类型&lt;/h2&gt;&lt;p&gt;JavaScript 是 弱类型 语言，但并不是没有类型，JavaScript可以识别下面 7 种不同类型的值：&lt;/p&gt;
+&lt;
     
     </summary>
     
+      <category term="JS" scheme="http://yoursite.com/categories/JS/"/>
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
@@ -155,6 +267,165 @@
   </entry>
   
   <entry>
+    <title>Flex布局</title>
+    <link href="http://yoursite.com/2016/07/25/Flex%E5%B8%83%E5%B1%80/"/>
+    <id>http://yoursite.com/2016/07/25/Flex布局/</id>
+    <published>2016-07-25T14:03:31.000Z</published>
+    <updated>2017-03-01T09:53:57.203Z</updated>
+    
+    <content type="html"><![CDATA[<p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。<br>任何一个容器都可以指定为Flex布局。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#box&#123;</span></div><div class="line">    display: flex;</div><div class="line">    width: 500px;</div><div class="line">    height: 300px;</div><div class="line">    border: 10px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="父容器属性"><a href="#父容器属性" class="headerlink" title="父容器属性"></a>父容器属性</h2><p>有六个属性设置在box父容器上，来控制子元素的显示方式；分别是：</p>
+<ul>
+<li>flex-direction    设置主轴对齐方式  默认 row  x轴从左到右；</li>
+<li>flex-wrap   子元素换行的方式  默认nowrap ；</li>
+<li>flex-flow   flex-direction和flex-wrap的简写 默认row nowrap；</li>
+<li>justify-content  子元素的对齐方式  默认flex-start  左对齐</li>
+<li>align-items   </li>
+<li><p>align-content</p>
+<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><p>决定主轴的对齐方向，分别有四个属性：       </p>
+</li>
+<li><p>row（默认值）：主轴为水平方向，起点在左端。   </p>
+</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#box&#123;</span></div><div class="line">        display: flex;</div><div class="line">        flex-direction: row;</div><div class="line">&#125;</div><div class="line">.inner&#123;</div><div class="line">        width: 100px;</div><div class="line">        height: 100px;</div><div class="line">        background: <span class="comment">#8a4182;</span></div><div class="line">        margin: 10px;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div id=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;div class=<span class="string">"inner"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;div class=<span class="string">"inner"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;div class=<span class="string">"inner"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>例如上面代码，主轴就是x轴横向的；起点在左端，从左到右排列</p>
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p>定义子元素超过一行，如何换行，分别有三个属性：</p>
+<ul>
+<li>nowrap（默认值）：默认不换行。   </li>
+<li>wrap：换行，第二行在第一行下面，从左到右</li>
+<li>wrap-reverse：换行，第二行在第一行上面，从左到右；</li>
+</ul>
+<h4 id="nowrap"><a href="#nowrap" class="headerlink" title="nowrap"></a>nowrap</h4><p>不换行，如果子元素超过父元素的宽度或者高度，会自动在主轴方向压缩<br>下面的例子，主轴是x轴，默认不换行，但是父元素的宽度是500，子元素明显大于父元素宽度，会默认宽度变窄；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#box&#123;</span></div><div class="line">        display: flex;</div><div class="line">        flex-direction: row;</div><div class="line">        width: 500px;</div><div class="line">        border: 1px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a2.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="wrap"><a href="#wrap" class="headerlink" title="wrap"></a>wrap</h4><p>换行，正常的折行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#box&#123;</span></div><div class="line">        display: flex;</div><div class="line">        flex-direction: row;</div><div class="line">        flex-wrap: wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a3.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>是flex-direction 和flex-wrap的简写形式，默认是 row  nowrap<br><code>flex-flow：flex-direction|flex-wrap;</code></p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>子元素在主轴对齐方式</p>
+<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。<br>flex-start和flex-end，center这三个都比较简单，主要区分开下面的space-between和space-around；<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a4.jpg" alt="space-between：两端对齐" title="">
+                </div>
+                <div class="image-caption">space-between：两端对齐</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a5.jpg" alt="space-around" title="">
+                </div>
+                <div class="image-caption">space-around</div>
+            </figure>
+</li>
+</ul>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>交叉轴如何对齐，如果flex-direction：row和row-reverse  那么交叉轴就是y轴，如果是column和column-reverse那么交叉轴是x轴</p>
+<ul>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。<br>.<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a6.jpg" alt="baseline:以第一个子元素文字的基线对齐" title="">
+                </div>
+                <div class="image-caption">baseline:以第一个子元素文字的基线对齐</div>
+            </figure>
+.<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a7.jpg" alt="stretch:子元素不设置高度，那么高度将沾满整个父元素" title="">
+                </div>
+                <div class="image-caption">stretch:子元素不设置高度，那么高度将沾满整个父元素</div>
+            </figure>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</li>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。</li>
+</ul>
+<h2 id="子元素属性"><a href="#子元素属性" class="headerlink" title="子元素属性"></a>子元素属性</h2><p>有六个属性设置在子元素项目上：</p>
+<ul>
+<li>order</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex</li>
+<li>align-self<h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3>子元素排列的位置默认是按照html先后顺序来排列的，html结构谁在前面默认就排列在前面；order的作用就是改变子元素排列顺序<br>order：默认（0） 值越小越靠前，<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;div class=<span class="string">"inner item"</span>&gt;1&lt;/div&gt;</div><div class="line">    &lt;div class=<span class="string">"inner"</span>&gt;2&lt;/div&gt;</div><div class="line">    &lt;div class=<span class="string">"inner"</span>&gt;3&lt;/div&gt;</div><div class="line">    &lt;div class=<span class="string">"inner"</span>&gt;4&lt;/div&gt;</div><div class="line">    &lt;div class=<span class="string">"inner"</span>&gt;5&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">.inner:nth-child(5)&#123;</div><div class="line">        order: -1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a8.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p>放大比例  默认是0   当有放大空间的时候，值越大，放大的比例越大<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.inner:nth-child(1)&#123;</div><div class="line">      flex-grow: 1;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a9.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p>缩小比例  默认是1  值越大，缩小的时候比例越小；</p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。<br>flex-basis：200px  ，如果项目有多余的空间，设置为200px。那么会放大到200的宽度；<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a10.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p> flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+<h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3><p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>除了auto是表示继承父元素，其他的跟align-items是一样的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。&lt;br&gt;任何一个容器都可以指定为Flex布局。&lt;br&gt;&lt;figure class=&quot;hi
+    
+    </summary>
+    
+      <category term="Flex布局" scheme="http://yoursite.com/categories/Flex%E5%B8%83%E5%B1%80/"/>
+    
+    
+      <category term="Flex布局" scheme="http://yoursite.com/tags/Flex%E5%B8%83%E5%B1%80/"/>
+    
+      <category term="弹性布局" scheme="http://yoursite.com/tags/%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Github访问慢的问题</title>
     <link href="http://yoursite.com/2016/06/23/Github%E8%AE%BF%E9%97%AE%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2016/06/23/Github访问慢的问题/</id>
@@ -217,6 +488,91 @@
   </entry>
   
   <entry>
+    <title>初学Bootstrap</title>
+    <link href="http://yoursite.com/2016/05/02/%E5%88%9D%E5%AD%A6Bootstrap/"/>
+    <id>http://yoursite.com/2016/05/02/初学Bootstrap/</id>
+    <published>2016-05-02T07:20:01.000Z</published>
+    <updated>2017-03-01T07:21:33.023Z</updated>
+    
+    <content type="html"><![CDATA[<p>bootstrap 的学习非常简单，并且它所提供的样式又非常精美。只要稍微简单的学习就可以制作出漂亮的页面。</p>
+<h2 id="Bootstrap引用"><a href="#Bootstrap引用" class="headerlink" title="Bootstrap引用"></a>Bootstrap引用</h2><p>bootstrap提供了三种类型的下载：</p>
+<hr>
+<p>用于生产环境的 Bootstrap</p>
+<p>　　编译并压缩后的 CSS、JavaScript 和字体文件。不包含文档和源码文件。</p>
+<p>Bootstrap 源码</p>
+<p>　　Less、JavaScript 和 字体文件的源码，并且带有文档。需要 Less 编译器和一些设置工作。</p>
+<p>Sass</p>
+<p>　　这是 Bootstrap 从 Less 到 Sass 的源码移植项目，用于快速地在 Rails、Compass 或 只针对 Sass 的项目中引入。</p>
+<hr>
+<p>其实我们不用下载bootstrap也可以使用它：</p>
+<p>Bootstrap 中文网 为 Bootstrap 专门构建了自己的免费 CDN 加速服务。基于国内云厂商的 CDN 服务，访问速度更快、加速效果更明显、没有速度和带宽限制、永久免费。<br>下面是base.html<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"zh-CN"</span>&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge"</span>&gt;</div><div class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</div><div class="line">    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</div><div class="line">    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;</div><div class="line"></div><div class="line">    &lt;!-- Bootstrap --&gt;</div><div class="line">    &lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"</span>&gt;</div><div class="line">    </div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;你好，bootstrap！&lt;/h1&gt;</div><div class="line"></div><div class="line">    &lt;!-- jQuery (necessary <span class="keyword">for</span> Bootstrap<span class="string">'s JavaScript plugins) --&gt;</span></div><div class="line">    &lt;script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"&gt;&lt;/script&gt;</div><div class="line">    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;</div><div class="line">    &lt;script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"&gt;&lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p> base.html中已经引入了bootstrap，将其保存，就可以使用bootstrap提供的样式了。</p>
+<h2 id="图标字体"><a href="#图标字体" class="headerlink" title="图标字体"></a>图标字体</h2><p>bootstrap默认提供了二百多个图标。我们可以通过span标签来使用这些图标：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;图标&lt;/h3&gt;   </div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-home"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-signal"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-cog"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-apple"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-trash"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-play-circle"</span>&gt;&lt;/span&gt;</div><div class="line">   &lt;span class=<span class="string">"glyphicon glyphicon-headphones"</span>&gt;&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/图标.jpg" alt="图标" title="">
+                </div>
+                <div class="image-caption">图标</div>
+            </figure>
+<h2 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h2><p><button></button>标签用于创建按钮，bootstrap提供了丰富的按钮样式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;按钮&lt;/h3&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-default"</span>&gt;按钮&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-primary"</span>&gt;primary&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-success"</span>&gt;success&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-info"</span>&gt;info&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-warning"</span>&gt;warning&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-danger"</span>&gt;danger&lt;/button&gt;</div><div class="line">    </div><div class="line">    &lt;h3&gt;按钮尺寸&lt;/h3&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-default"</span>&gt;按钮&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-primary btn-lg"</span>&gt;primary&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-success btn-sm"</span>&gt;success&lt;/button&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-info btn-xs"</span>&gt;info&lt;/button&gt;</div><div class="line"></div><div class="line">    &lt;h3&gt;把图标显示在按钮里&lt;/h3&gt;</div><div class="line">    &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn btn-default"</span>&gt;&lt;span class=<span class="string">"glyphicon glyphicon-home"</span>&gt;&lt;/span&gt;&amp;nbsp;&amp;nbsp;按钮&lt;/button&gt;</div></pre></td></tr></table></figure></p>
+<p>按钮除了有默认的大小外，bootstrap还提供三个参数来调整按钮的大小，分别是：btn-lg、btn-sm和btn-xs。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/按钮.jpg" alt="按钮" title="">
+                </div>
+                <div class="image-caption">按钮</div>
+            </figure></p>
+<h2 id="下拉菜单"><a href="#下拉菜单" class="headerlink" title="下拉菜单"></a>下拉菜单</h2><p>　下拉菜单是最常见的交互之一，bootstrap提供了漂亮的样式。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;下拉菜单&lt;/h3&gt;</div><div class="line">  &lt;div class=<span class="string">"dropdown"</span>&gt;</div><div class="line">    &lt;button class=<span class="string">"btn btn-primary dropdown-toggle"</span> <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">"dropdownMenu1"</span> data-toggle=<span class="string">"dropdown"</span> aria-expanded=<span class="string">"true"</span>&gt;</div><div class="line">      Dropdown</div><div class="line">      &lt;span class=<span class="string">"caret"</span>&gt;&lt;/span&gt;</div><div class="line">    &lt;/button&gt;</div><div class="line">    &lt;ul class=<span class="string">"dropdown-menu"</span> role=<span class="string">"menu"</span> aria-labelledby=<span class="string">"dropdownMenu1"</span>&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Action&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Another action&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Something <span class="keyword">else</span> here&lt;/a&gt;&lt;/li&gt;</div><div class="line">      &lt;li role=<span class="string">"presentation"</span>&gt;&lt;a role=<span class="string">"menuitem"</span> tabindex=<span class="string">"-1"</span> href=<span class="string">"#"</span>&gt;Separated link&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  &lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="输入框"><a href="#输入框" class="headerlink" title="输入框"></a>输入框</h2><p>通过<code>&lt;input&gt;&lt;/input&gt;</code>标签去创建输入框。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;输入框&lt;/h3&gt;</div><div class="line">    &lt;div class=<span class="string">"input-group"</span>&gt;</div><div class="line">      &lt;span class=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt;</div><div class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> placeholder=<span class="string">"username"</span>&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=<span class="string">"input-group"</span>&gt;</div><div class="line">      &lt;span class=<span class="string">"glyphicon glyphicon-lock"</span>&gt;&lt;/span&gt;</div><div class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"password"</span> placeholder=<span class="string">"password"</span>&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/输入框.jpg" alt="输入框" title="">
+                </div>
+                <div class="image-caption">输入框</div>
+            </figure>
+<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;导航栏&lt;/h3&gt;</div><div class="line">    &lt;nav class=<span class="string">"navbar navbar-inverse navbar-fixed-top"</span>&gt;</div><div class="line">        &lt;div id=<span class="string">"navbar"</span> class=<span class="string">"navbar-collapse collapse"</span>&gt;</div><div class="line">          &lt;ul class=<span class="string">"nav navbar-nav"</span>&gt;</div><div class="line">            &lt;li class=<span class="string">"active"</span>&gt;&lt;a href=<span class="string">"#"</span>&gt;Home&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li&gt;&lt;a href=<span class="string">"#about"</span>&gt;About&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li&gt;&lt;a href=<span class="string">"#contact"</span>&gt;Contact&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li class=<span class="string">"dropdown"</span>&gt;</div><div class="line">              &lt;a href=<span class="string">"#"</span> class=<span class="string">"dropdown-toggle"</span> data-toggle=<span class="string">"dropdown"</span> role=<span class="string">"button"</span> aria-expanded=<span class="string">"false"</span>&gt;Dropdown &lt;span class=<span class="string">"caret"</span>&gt;&lt;/span&gt;&lt;/a&gt;</div><div class="line">              &lt;ul class=<span class="string">"dropdown-menu"</span> role=<span class="string">"menu"</span>&gt;</div><div class="line">                &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Action&lt;/a&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Another action&lt;/a&gt;&lt;/li&gt;</div><div class="line">                &lt;li class=<span class="string">"divider"</span>&gt;&lt;/li&gt;</div><div class="line">                &lt;li class=<span class="string">"dropdown-header"</span>&gt;Nav header&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Separated link&lt;/a&gt;&lt;/li&gt;</div><div class="line">              &lt;/ul&gt;</div><div class="line">            &lt;/li&gt;</div><div class="line">          &lt;/ul&gt;</div><div class="line">        &lt;/div&gt;&lt;!--/.nav-collapse --&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/nav&gt;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/导航.jpg" alt="导航栏" title="">
+                </div>
+                <div class="image-caption">导航栏</div>
+            </figure>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;表单&lt;/h3&gt;</div><div class="line">   &lt;form&gt;</div><div class="line">   &lt;div class=<span class="string">"form-group"</span>&gt;</div><div class="line">     &lt;span class=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt;</div><div class="line">     &lt;input <span class="built_in">type</span>=<span class="string">"email"</span> id=<span class="string">"exampleInputEmail1"</span> placeholder=<span class="string">"Enter email"</span>&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;div class=<span class="string">"form-group"</span>&gt;</div><div class="line">     &lt;span class=<span class="string">"glyphicon glyphicon-lock"</span>&gt;&lt;/span&gt;</div><div class="line">     &lt;input <span class="built_in">type</span>=<span class="string">"password"</span> id=<span class="string">"exampleInputPassword1"</span> placeholder=<span class="string">"Password"</span>&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;div class=<span class="string">"form-group"</span>&gt;</div><div class="line">     &lt;label <span class="keyword">for</span>=<span class="string">"exampleInputFile"</span>&gt;File input&lt;/label&gt;</div><div class="line">     &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> id=<span class="string">"exampleInputFile"</span>&gt;</div><div class="line">     &lt;p class=<span class="string">"help-block"</span>&gt;Example block-level <span class="built_in">help</span> text here.&lt;/p&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;div class=<span class="string">"checkbox"</span>&gt;</div><div class="line">     &lt;label&gt;</div><div class="line">       &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span>&gt; Check me out</div><div class="line">     &lt;/label&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">   &lt;button <span class="built_in">type</span>=<span class="string">"submit"</span> class=<span class="string">"btn btn-default"</span>&gt;Submit&lt;/button&gt;</div><div class="line"> &lt;/form&gt;</div></pre></td></tr></table></figure>
+<h2 id="警告框"><a href="#警告框" class="headerlink" title="警告框"></a>警告框</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;警告框&lt;/h3&gt;</div><div class="line">    &lt;div class=<span class="string">"alert alert-warning alert-dismissible"</span> role=<span class="string">"alert"</span>&gt;</div><div class="line">       &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"close"</span> data-dismiss=<span class="string">"alert"</span> aria-label=<span class="string">"Close"</span>&gt;&lt;span aria-hidden=<span class="string">"true"</span>&gt;&amp;<span class="built_in">times</span>;&lt;/span&gt;&lt;/button&gt;</div><div class="line">       &lt;strong&gt;Warning!&lt;/strong&gt; Better check yourself, you<span class="string">'re not looking too good.</span></div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-success" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;success!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-info" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;info!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-warning" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;warning!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="alert alert-danger" role="alert"&gt;</div><div class="line">        &lt;a href="#" class="alert-link"&gt;danger!&lt;/a&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/警告框.jpg" alt="警告框" title="">
+                </div>
+                <div class="image-caption">警告框</div>
+            </figure>
+<h2 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;进度条&lt;/h3&gt;</div><div class="line">    &lt;div class=<span class="string">"progress"</span>&gt;</div><div class="line">      &lt;div class=<span class="string">"progress-bar"</span> role=<span class="string">"progressbar"</span> aria-valuenow=<span class="string">"70"</span> aria-valuemin=<span class="string">"0"</span> aria-valuemax=<span class="string">"100"</span> style=<span class="string">"width: 60%;"</span>&gt;</div><div class="line">        70%</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/05/02/初学Bootstrap/进度条.jpg" alt="进度条" title="">
+                </div>
+                <div class="image-caption">进度条</div>
+            </figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;bootstrap 的学习非常简单，并且它所提供的样式又非常精美。只要稍微简单的学习就可以制作出漂亮的页面。&lt;/p&gt;
+&lt;h2 id=&quot;Bootstrap引用&quot;&gt;&lt;a href=&quot;#Bootstrap引用&quot; class=&quot;headerlink&quot; title=&quot;Bootstra
+    
+    </summary>
+    
+      <category term="Bootstrap" scheme="http://yoursite.com/categories/Bootstrap/"/>
+    
+    
+      <category term="Bootstrap" scheme="http://yoursite.com/tags/Bootstrap/"/>
+    
+  </entry>
+  
+  <entry>
     <title>利用border属性绘制简单图形</title>
     <link href="http://yoursite.com/2016/04/02/%E5%88%A9%E7%94%A8border%E5%B1%9E%E6%80%A7%E7%BB%98%E5%88%B6%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2/"/>
     <id>http://yoursite.com/2016/04/02/利用border属性绘制简单图形/</id>
@@ -238,6 +594,145 @@
     
     
       <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用CSS优化</title>
+    <link href="http://yoursite.com/2016/03/15/%E5%B8%B8%E7%94%A8CSS%E4%BC%98%E5%8C%96/"/>
+    <id>http://yoursite.com/2016/03/15/常用CSS优化/</id>
+    <published>2016-03-15T14:40:51.000Z</published>
+    <updated>2017-03-01T08:44:56.050Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于CSS的优化工作主要从两个方面着手</p>
+<ul>
+<li>网络性能：把CSS写到字节数最少，加快下载速度，自然可以让页面渲染的更快一些</li>
+<li>语法性能：同样都能实现某些效果，但并不是所有的方式效果都相同，我们看过不少关于JavaScript方面的语法优化知识，其实CSS里面也有一些<h2 id="CSS压缩"><a href="#CSS压缩" class="headerlink" title="CSS压缩"></a>CSS压缩</h2></li>
+</ul>
+<p>CSS压缩并不是什么高端的姿势，但却很有用，其原理很简单，就是把我们CSS中没用的空白符等删去，达到缩减字符个数的目的</p>
+<p>我们有这样一段CSS脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line">    background-color:<span class="comment">#ffffff;</span></div><div class="line">    background-image:url(a.jpg);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>经过压缩后会变成这样<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.test&#123; background-color:<span class="comment">#fff;  background-image:url(a.jpg)&#125;</span></div></pre></td></tr></table></figure></p>
+<p>当然高级些的压缩工具也会帮我们优化一些语法，提供很多选项，让我们的压缩更有控制，之前在的公司不采用CSS压缩，所以我没有什么实践经验，自己写东西常用的是YUI Compressor，有很多在线版的很方便</p>
+<h2 id="gzip压缩"><a href="#gzip压缩" class="headerlink" title="gzip压缩"></a>gzip压缩</h2><p>Gzip是一种流行的文件压缩算法，现在的应用十分广泛，尤其是在Linux平台，这个不止是对CSS，当应用Gzip压缩到一个纯文本文件时，效果是非常明显的，大约可以减少70％以上的文件大小（这取决于文件中的内容）。想进一步了解gzip看看维基百科。</p>
+<p>在没有gzip压缩的情况下，Web服务器直接把html页面、CSS脚本、js脚本发送给浏览器，而支持gzip的Web服务器将把文件压缩后再发给浏览器，浏览器（支持gzip）在本地进行解压和解码，并显示原文件。这样我们传输的文件字节数减少了，自然可以达到网络性能优化的目的。gzip压缩需要服务器的支持，所以我们需要在服务器端进行配置</p>
+<p>当然除了gzip压缩，缓存也是我们需要注意的，这和CSS优化关系不大了，在说web优化的时候再说</p>
+<h2 id="合写CSS"><a href="#合写CSS" class="headerlink" title="合写CSS"></a>合写CSS</h2><p>除了压缩的方式，我们还可以通过少写CSS属性来达到减少CSS字节的目的，拿个最常见的例子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line"> background-color: <span class="comment">#000;</span></div><div class="line"> background-image: url(image.jpg);</div><div class="line"> background-position: left top;</div><div class="line"> background-repeat: no-repeat;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以改写一下上面的CSS，达到同样的效果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line">  background: <span class="comment">#000 url(image.jpg) top left no-repeat;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在CSS中还有很多类似的属性可以合写</p>
+<p>font<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;font-style: oblique; font-weight: bold; font-size: 16px; font-family: Helvetica, Arial, Sans-Serif;&#125;</div><div class="line"></div><div class="line">&#123;font: oblique bold 16px Helvetica, Arial, Sans-Serif;&#125;</div></pre></td></tr></table></figure></p>
+<p>margin/padding<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;margin-top: 5px; margin-right: 10px; margin-bottom: 20px; margin-left: 15px;&#125;</div><div class="line"></div><div class="line">&#123;margin: 5px 10px 20px 15px;&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;padding-top: 5px; padding-right: 10px; padding-bottom: 5px; padding-left: 10px;&#125;</div><div class="line"></div><div class="line">&#123;padding: 5px 10px&#125;</div><div class="line"></div><div class="line">&#123;padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;&#125;</div><div class="line"></div><div class="line">&#123;padding:5px;&#125;</div></pre></td></tr></table></figure>
+<p>background<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;background-color: <span class="comment">#000; background-image: url(image.jpg); background-position: left top; background-repeat: no-repeat;&#125;</span></div><div class="line"></div><div class="line">&#123;background: <span class="comment">#000 url(image.jpg) top left no-repeat;&#125;</span></div></pre></td></tr></table></figure></p>
+<p>border<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;border-width: 2px; border-style: solid; border-color: <span class="comment">#000;&#125;</span></div><div class="line"></div><div class="line">&#123;border: 2px solid <span class="comment">#000;&#125;</span></div><div class="line">&#123;border-top: 2px; border-right: 5px; border-left: 10px; border-bottom: 3px;&#125;</div><div class="line"></div><div class="line">&#123;border: 2px 5px 10px 3px;&#125;</div></pre></td></tr></table></figure></p>
+<p>另外CSS3添加的很多属性如transform、animation相关的都可以合写，不一一列举，大家用的时候要注意</p>
+<h2 id="利用继承"><a href="#利用继承" class="headerlink" title="利用继承"></a>利用继承</h2><p>CSS的继承机制也可以帮我们再一定程度上缩减字节数，我们知道CSS有很多属性是可以继承的即在父容器设置了默写属性，子容器会默认也使用这些属性，因此如果我们希望全文字体尺寸是14px，大可不必为每个容器设置，只需要在body上设置就可以了。应用这个技巧，把CSS属性在可能的情况下提到父容器是可以帮我们节省CSS字节的，顺便说一下哪些属性可以继承</p>
+<ul>
+<li>所有元素可继承：visibility和cursor</li>
+<li>内联元素和块元素可继承：letter-spacing、word-spacing、white-space、line-height、color、font、 font-family、font-size、font-style、font-variant、font-weight、text- decoration、text-transform、direction</li>
+<li>块状元素可继承：text-indent和text-align<br>列表元素可继承：list-style、list-style-type、list-style-position、list-style-image</li>
+<li>表格元素可继承：border-collapse</li>
+<li>不可继承的：display、margin、border、padding、background、height、min-height、max- height、width、min-width、max-width、overflow、position、left、right、top、 bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、 page-bread-before和unicode-bidi</li>
+</ul>
+<h2 id="抽离、拆分CSS，不加载所有CSS"><a href="#抽离、拆分CSS，不加载所有CSS" class="headerlink" title="抽离、拆分CSS，不加载所有CSS"></a>抽离、拆分CSS，不加载所有CSS</h2><p>抽离CSS是指把一些通用的CSS放到一个文件内，而不是写道各个页面，这样一次下载后，其它页面用到的时候就可以利用缓存了，减少不必要的重复下载。</p>
+<p>应用抽离原则，在很多时候我们把页面通用的CSS写到了一个文件，这样加载一次后就可以利用缓存，但这样做并不适合所有场景，以前我写CSS把一些前端插件用的CSS全写到了一个页面，但是有时候页面只会用一个Dialog、有的页面只用到了一个TreeView，但却把十多个插件的CSS都下载到了页面，这就是问题了，所以虽然把CSS写道一个文件可以减少http请求，但像刚才的这种情况是不应该这样做的，对一些所有页面都会用到的我们可以这样做，所以我们在抽离和拆分的时候可要想好了。</p>
+<h2 id="CSS放在head中，减少repaint和reflow"><a href="#CSS放在head中，减少repaint和reflow" class="headerlink" title="CSS放在head中，减少repaint和reflow"></a>CSS放在head中，减少repaint和reflow</h2><p>相信做web的同学都知道这条建议，但为什么CSS放在页面顶部有利于网页优化呢？浏览器渲染页面大概是这样的，当浏览器从上到下一边下载html生成DOM tree一边根据浏览器默认及现有CSS生成render tree来渲染页面，当遇到新的CSS的时候下载并结合现有CSS重新生成render tree，刚才的渲染工作就白费了，如果我们把所有CSS都放到页面顶部，这样就没有重新渲染的过程了。</p>
+<p>类似的我们知道了这个也应该在脚本中注意尽量减少repaint和reflow，什么情况会导致这两种情况呢</p>
+<p>reflow：当DOM元素出现隐藏／显示、尺寸变化、位置变化的时候都会让浏览器重新渲染页面，之前渲染工作白费了</p>
+<p>repaint：当元素的背景颜色、边框颜色不引起reflow的变化是会让浏览器重新渲染该元素。貌似还可以接受，但如果我们在开始就定义好了，不让浏览器重复工作就更好了。 </p>
+<p>不用CSS表达式</p>
+<p>无论怎样生成的CSS，最终我们放到页面上得是静态普通文本，没有变量、计算神马的，CSS表达式是一种动态设置CSS属性的东东，被IE5-IE8支持，看一个大家常用的例子<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  background-color: expression((new Date()).getHours()%2?<span class="string">"#B8D4FF"</span>:<span class="string">"#F08A00"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 这样我们赋予了CSS类似JavaScript的功能，CSS表达式非常强大，甚至可以使用CSS表达式实现 min-width 属性，隔行换色，模拟 :hover, :before, :after 等伪类，看起来能解决很多IE下的浏览器兼容性等问题，但是其带来的副作用超出我们的想象，这条CSS规则并不是只运行一次，为了确保有效性，CSS表达式会进行频繁的求值，当改变窗口大小，滚动页面甚至移动鼠标都会触发表达式进行求值，如此频繁的求值以至于浏览器的性能收到严重的影响。据《高性能网站建设建议》中的测试其执行次数远远超出我们想象，感兴趣同学可以进去看看，我们的建议就试尽量避免甚至不要使用CSS表达式。</p>
+<h2 id="不乱用CSS-reset或属性设置"><a href="#不乱用CSS-reset或属性设置" class="headerlink" title="不乱用CSS reset或属性设置"></a>不乱用CSS reset或属性设置</h2><p>在网站建设中我们经常使用一些CSS reset，达到跨浏览器统一的目的，但是很多时候我们的CSS reset过于臃肿，主要有两个问题</p>
+<ul>
+<li>把很多浏览器对元素的默认属性有设置了一边，比如div的padding和margin为0啊什么的，这是没有必要的</li>
+<li>把一些很不常用的元素的设置也写进了CSS reset，如 ruby这样的元素</li>
+</ul>
+<h2 id="避免适用通配符或隐式通配符"><a href="#避免适用通配符或隐式通配符" class="headerlink" title="避免适用通配符或隐式通配符"></a>避免适用通配符或隐式通配符</h2><p>CSS中的*代表通配符，虽然好用但使用不当这也是一个恶魔，比如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">body * &#123;padding:0;margin:0;&#125;</div></pre></td></tr></table></figure></p>
+<p>我们以为这是对body的子结点都设置一些属性，但因为CSS继承特性的原因，页面所有元素都会接受这个规则，对于复杂的页面在性能上的影响还是很大的，这并不是说不能使用通配符，而是说使用的时候要注意范围。相信这个规则大家都知道，但是有一些隐式的通配符也需要我们的注意，比如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">:visible&#123;</div><div class="line">  padding:0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样的几乎就和通配符一样，在使用的时候一定要注意范围限制问题</p>
+<h2 id="避免层级或过度限制的CSS"><a href="#避免层级或过度限制的CSS" class="headerlink" title="避免层级或过度限制的CSS"></a>避免层级或过度限制的CSS</h2><p>估计web开发的同学都看过MDN上Writing efficient CSS或者其各种翻译版本，文中总结了几点在书写CSS selector的意见，搞明白文中建议的一个前提是得知道CSS是从右到左解析的，而不是我们认为的从左到右，关于为什么这样做肯定是因为高效，不明就里的同学可以上网搜一下相关知识</p>
+<p>不要用标签或 class 来限制 ID 规则</p>
+<p>这个应该是个常识，但很多同学都会误用，写出#test.info或者div#test这样的选择器，这个只能说是画蛇添足，id已经可以唯一而且最快的定位一个元素了</p>
+<p>不要用标签名限制 class 规则</p>
+<p> 这个估计被误用的更多，如div.info这样的写法，其实我们可以直接写为.info，从右到左解析的原因可以知道为什么其低效，如果直接使用class不能达到目的，一般情况下应该是class设计的有问题，CSS需要重构了</p>
+<p>尽量使用最具体的类别、避免后代选择器、属于标签类别的规则永远不要包含子选择器</p>
+<p>这三条规则是想通的，因为从左到右解析关系，在CSS选择器中后代选择器非但没有帮我们加快CSS查找，反而后代选择器是 CSS 中耗费最昂贵的选择器。 它的耗费是极其昂贵的—特别是当选择器在标签或通用类别中，作者给的建议是当使用子选择器时要十分谨慎，能免则免。其开销可见一斑了。</p>
+<p>对此我们可以通过具体类别——使用单一或尽量少的class解决。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于CSS的优化工作主要从两个方面着手&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网络性能：把CSS写到字节数最少，加快下载速度，自然可以让页面渲染的更快一些&lt;/li&gt;
+&lt;li&gt;语法性能：同样都能实现某些效果，但并不是所有的方式效果都相同，我们看过不少关于JavaScript方面的语法优化
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
+    
+      <category term="优化" scheme="http://yoursite.com/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>经典电影排行</title>
+    <link href="http://yoursite.com/2016/02/06/%E7%BB%8F%E5%85%B8%E7%94%B5%E5%BD%B1%E6%8E%92%E8%A1%8C/"/>
+    <id>http://yoursite.com/2016/02/06/经典电影排行/</id>
+    <published>2016-02-06T10:11:57.000Z</published>
+    <updated>2017-03-01T07:50:43.461Z</updated>
+    
+    <content type="html"><![CDATA[<p>过年时间重温了几部电影，先简单写个列表</p>
+<h2 id="教父"><a href="#教父" class="headerlink" title="教父"></a>教父</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/02/06/经典电影排行/01教父.jpg" alt="教父" title="">
+                </div>
+                <div class="image-caption">教父</div>
+            </figure>
+<p>如果你身边有朋友告诉你，他／她看过几百遍《教父》，千万不要觉得惊奇，从某种意义上讲，她就像《红楼梦》一样，任何可以反复观看的作品都有她必然的道理。<br>电影里所有的这一切都是以真实的情感作为基础的，没有任何的做作，没有任何的夸张，就像我们真实的生活一样，人对于真实其实是非常敏感的，我们对于编造的东西总是会有一种天生的觉察力，我们其实都能一眼分辨出什么是经历，什么是段子，因为真正动人的东西都是真实的，我们在看到《教父》当中这些琐碎的生活片段时都会那么的感动，因为这些片段和我们真实的生活产生了共鸣，合情合理（make sense）是感动的基础。</p>
+<h2 id="肖申克的救赎"><a href="#肖申克的救赎" class="headerlink" title="肖申克的救赎"></a>肖申克的救赎</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/02/06/经典电影排行/02肖申克的救赎.jpg" alt="肖申克的救赎" title="">
+                </div>
+                <div class="image-caption">肖申克的救赎</div>
+            </figure>
+<p>《肖申克的救赎》是一部1994年上映的美国经典剧情电影，改编自斯蒂芬·金《不同的季节》中收录的《丽塔海华丝及萧山克监狱的救赎》。电影讲述了安迪被冤入狱和在狱中的种种经历，并设法通过自己的救赎重新获得自由的故事。在1994年的奥斯卡金像奖上，本片获得七项提名，但最终未能获得任何奖项。令人意外的是，虽然该片在电影院公映时并未获得太多好评，但却在家庭影院市场和出租市场获得的巨大成功，至今已经成了著名案例。</p>
+<h2 id="辛德勒的名单"><a href="#辛德勒的名单" class="headerlink" title="辛德勒的名单"></a>辛德勒的名单</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/02/06/经典电影排行/03辛德勒的名单.jpg" alt="辛德勒的名单" title="">
+                </div>
+                <div class="image-caption">辛德勒的名单</div>
+            </figure>
+<p>第66届（1994年）奥斯卡最佳影片——《辛德勒的名单》（Schindler’sList）根据澳大利亚小说家托马斯·科内雅雷斯所著的《辛德勒名单》改编而成。史蒂文·斯皮尔伯格导演，真实的再现了德国企业家奥斯卡·辛德勒在第二次世界大战期间保护1200余名犹太人免遭法西斯杀害的真实的历史事件。</p>
+<h2 id="飞越疯人院"><a href="#飞越疯人院" class="headerlink" title="飞越疯人院"></a>飞越疯人院</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/02/06/经典电影排行/04飞越疯人院.jpg" alt="飞越疯人院" title="">
+                </div>
+                <div class="image-caption">飞越疯人院</div>
+            </figure>
+<p>《飞越疯人院》（One Flew Over the Cuckoo’s Nest）是1975年美国导演米洛斯·福曼所拍摄电影，根据1962年肯·克西同名小说改编。该片是美国电影历史上最经典的电影之一，被称为“影视表演的必修课”；曾获1976年第48届奥斯卡最佳影片，最佳男、女主角，最佳导演和最佳改编剧本五项大奖。</p>
+<h2 id="…"><a href="#…" class="headerlink" title="…"></a>…</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;过年时间重温了几部电影，先简单写个列表&lt;/p&gt;
+&lt;h2 id=&quot;教父&quot;&gt;&lt;a href=&quot;#教父&quot; class=&quot;headerlink&quot; title=&quot;教父&quot;&gt;&lt;/a&gt;教父&lt;/h2&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
+                
+    
+    </summary>
+    
+      <category term="电影" scheme="http://yoursite.com/categories/%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="电影" scheme="http://yoursite.com/tags/%E7%94%B5%E5%BD%B1/"/>
     
   </entry>
   
