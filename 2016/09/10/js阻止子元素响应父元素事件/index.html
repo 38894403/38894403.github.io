@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>js阻止子元素响应父元素事件 | Zhangce | 简单不先于复杂，而是在复杂之后</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JS,Event">
+    <meta name="description" content="事件冒泡在一个元素上触发事件，如果此元素定义了处理程序，那么此次事件就会被捕获，根据程序进行该事件的处理。否则这个事件会根据DOM树向父节点逐级传播，如果从始至终都没有被处理，那么最终会到达document或window根元素。
+阻止事件冒泡W3C标准调用事件对象的stopPropagation()方法，IE可以设置对象的cancelBubble属性为true;
+在Jquery中的事件方法都带有e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js阻止子元素响应父元素事件">
+<meta property="og:url" content="http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/index.html">
+<meta property="og:site_name" content="Zhangce">
+<meta property="og:description" content="事件冒泡在一个元素上触发事件，如果此元素定义了处理程序，那么此次事件就会被捕获，根据程序进行该事件的处理。否则这个事件会根据DOM树向父节点逐级传播，如果从始至终都没有被处理，那么最终会到达document或window根元素。
+阻止事件冒泡W3C标准调用事件对象的stopPropagation()方法，IE可以设置对象的cancelBubble属性为true;
+在Jquery中的事件方法都带有e">
+<meta property="og:updated_time" content="2017-03-01T03:13:29.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js阻止子元素响应父元素事件">
+<meta name="twitter:description" content="事件冒泡在一个元素上触发事件，如果此元素定义了处理程序，那么此次事件就会被捕获，根据程序进行该事件的处理。否则这个事件会根据DOM树向父节点逐级传播，如果从始至终都没有被处理，那么最终会到达document或window根元素。
+阻止事件冒泡W3C标准调用事件对象的stopPropagation()方法，IE可以设置对象的cancelBubble属性为true;
+在Jquery中的事件方法都带有e">
+    
+        <link rel="alternative" href="/atom.xml" title="Zhangce" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张策</h5>
+          <a href="mailto:79_qijiu@sina.com" title="79_qijiu@sina.com" class="mail">79_qijiu@sina.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/38894403" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/ispoiu" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js阻止子元素响应父元素事件</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">js阻止子元素响应父元素事件</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-09-10T06:23:33.000Z" itemprop="datePublished" class="page-time">
+  2016-09-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件冒泡"><span class="post-toc-number">1.</span> <span class="post-toc-text">事件冒泡</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#阻止事件冒泡"><span class="post-toc-number">2.</span> <span class="post-toc-text">阻止事件冒泡</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-js阻止子元素响应父元素事件"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js阻止子元素响应父元素事件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年09月10日 14:23" datetime="2016-09-10T06:23:33.000Z"  itemprop="datePublished">2016-09-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>在一个元素上触发事件，如果此元素定义了处理程序，那么此次事件就会被捕获，根据程序进行该事件的处理。否则这个事件会根据DOM树向父节点逐级传播，如果从始至终都没有被处理，那么最终会到达document或window根元素。</p>
+<h2 id="阻止事件冒泡"><a href="#阻止事件冒泡" class="headerlink" title="阻止事件冒泡"></a>阻止事件冒泡</h2><p>W3C标准调用事件对象的<code>stopPropagation()</code>方法，IE可以设置对象的<code>cancelBubble</code>属性为<code>true</code>;</p>
+<p>在Jquery中的事件方法都带有event参数，这是一个符合W3C标准的事件对象，且兼容IE，可以使用<code>event.stopPropagation()</code>阻止冒泡。更简单的，直接<code>return false</code>;，等价于<code>event.stopPropagation()</code>加上<code>event.preventDefault()</code>。</p>
+<p>在原生JS中，事件对象要区别对待。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> cancelEvent(e) &#123;</div><div class="line">    <span class="keyword">if</span>(e) &#123;</div><div class="line">        e.stopPropagation();  //非IE</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        window.event.cancelBubble = <span class="literal">true</span>;  //IE</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```bash</div><div class="line"><span class="comment">## 阻止多个子元素的事件</span></div><div class="line">综上所述，想要链接和按钮元素不响应父节点事件，便要为所有这些元素注册事件，编写阻止事件冒泡的代码。</div><div class="line">```bash</div><div class="line">var div = $(<span class="string">'#div'</span>);</div><div class="line">div.click(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">    // do...</div><div class="line">&#125;);</div><div class="line">div.on(<span class="string">'click'</span>, <span class="string">'a,button,input'</span>, <span class="keyword">function</span>(event)&#123;</div><div class="line">    event.stopPropagation();  // 或 <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>使用event对象解决<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#div'</span>).on(<span class="string">'click'</span>, <span class="keyword">function</span>(event)&#123;</div><div class="line">    var tag = event.target.tagName;</div><div class="line">    <span class="keyword">if</span>(tag!=<span class="string">'A'</span> &amp;&amp; tag!=<span class="string">'BUTTON'</span> &amp;&amp; tag!=<span class="string">'INPUT'</span>)&#123;</div><div class="line">        // do...</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-01T03:13:29.697Z" itemprop="dateUpdated">2017年3月1日 11:13</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2016/09/10/js阻止子元素响应父元素事件/" target="_blank" rel="external">http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="张策">
+            张策
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Event/">Event</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/&title=《js阻止子元素响应父元素事件》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/&title=《js阻止子元素响应父元素事件》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js阻止子元素响应父元素事件》 — Zhangce&url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/06/Node中的url模块/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Node中的url模块</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/06/23/Github访问慢的问题/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Github访问慢的问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="js阻止子元素响应父元素事件" data-title="js阻止子元素响应父元素事件" data-url="http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'38894403', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Zhangce &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/&title=《js阻止子元素响应父元素事件》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/&title=《js阻止子元素响应父元素事件》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js阻止子元素响应父元素事件》 — Zhangce&url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/09/10/js阻止子元素响应父元素事件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3awW7bMBAEUP//T6dAr62cmV0yboHHUyA7kh4DkJtZvl7x+Po93n/6NJI7PD3r6W6HBx4eHt7o1ZOX+/MBT1few/LJytmPU4CHh4d3jTdboN/fOpmmU7/1eB0PDw/vo7x8CvKlvN0w8PDw8P533s/ECh/bGPDw8PDe8toQ9v0D8uK7LccvZi14eHh4MW+2xH/254v9PTw8PLxFV71dcPPoob3/12jg4eHh3eAlxW7yD38S5iYlePtp9E08PDy8o7wkCGgL3GS53zTAiugEDw8P7wLvQGN+NB0JrD2eFWXVeHh4eGveJghol/v2KZttBg8PD+8er23Vt0399lXaELk4LoCHh4d3iNeW0Xl4caqpttp+8PDw8K7xklA1/2bSBssX/bp0zhNlPDw8vBGvjUdn5XUbB7eByDdbFx4eHt4FXhsobErw9kr7VtH2gIeHh7fg5Q+bTVC76Ce/W/yMh4eHd423KXbbzWB27GAWIuPh4eHd4O1b+/uyeHZQYBaC4OHh4Z3i5WV0vnzvjyYkW1F9gAAPDw9vzUva+fkinscKs7CjLtnx8PDwLvDaxlISBCTXZxvSazbw8PDwjvI2L9QWvnlJ/VqMx5QaDw8P7xBvE5K2kUQe4K5aXPlM4+Hh4S147TawaVPlx7Nmm8pj4oKHh4d3iNcutRtqfp88sKgbYHh4eHhHeW1hnYcO+eKel+9RkIGHh4d3gde+RFsov//OZkLr9hgeHh7eId5XOWYztz9iNTyOgIeHh3eBt3lMFAeUQUYePbSFOx4eHt5Z3r04NY8t2ivv/0p/6e/h4eHhXeDNSuHkdZNFPJ+4YVaNh4eH9yHerDWVF8Ft1R+FJnh4eHj/AG920CrfYNpI95v74OHh4V3jbcKIfejQRsB5gY6Hh4d3g9c2wPIg4MaW00a6eHh4eEd5vwC/Xyvw3JSZ+gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

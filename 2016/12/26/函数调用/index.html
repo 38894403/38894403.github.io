@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>函数调用 | Zhangce | 简单不先于复杂，而是在复杂之后</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JS">
+    <meta name="description" content="函数的定义会为形参提供实参的值。函数使用它们实参的值来计算返回值，称为该函数调用表达式的值。除了实参之外，每次调用还会拥有另一个值——本次调用的上下文——这就是 this 关键字。如果函数挂在在一个对象上，作为对象的一个属性，就称为它为对象的方法。当通过这个对象来调用函数时，该对象就是此次调用的上下文（context），也就是该函数的this的值。在JS中，函数即对象，程序可以随意操控它们。比如，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数调用">
+<meta property="og:url" content="http://yoursite.com/2016/12/26/函数调用/index.html">
+<meta property="og:site_name" content="Zhangce">
+<meta property="og:description" content="函数的定义会为形参提供实参的值。函数使用它们实参的值来计算返回值，称为该函数调用表达式的值。除了实参之外，每次调用还会拥有另一个值——本次调用的上下文——这就是 this 关键字。如果函数挂在在一个对象上，作为对象的一个属性，就称为它为对象的方法。当通过这个对象来调用函数时，该对象就是此次调用的上下文（context），也就是该函数的this的值。在JS中，函数即对象，程序可以随意操控它们。比如，">
+<meta property="og:updated_time" content="2017-03-01T02:47:10.766Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="函数调用">
+<meta name="twitter:description" content="函数的定义会为形参提供实参的值。函数使用它们实参的值来计算返回值，称为该函数调用表达式的值。除了实参之外，每次调用还会拥有另一个值——本次调用的上下文——这就是 this 关键字。如果函数挂在在一个对象上，作为对象的一个属性，就称为它为对象的方法。当通过这个对象来调用函数时，该对象就是此次调用的上下文（context），也就是该函数的this的值。在JS中，函数即对象，程序可以随意操控它们。比如，">
+    
+        <link rel="alternative" href="/atom.xml" title="Zhangce" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张策</h5>
+          <a href="mailto:79_qijiu@sina.com" title="79_qijiu@sina.com" class="mail">79_qijiu@sina.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/38894403" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/ispoiu" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">函数调用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">函数调用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-26T12:22:09.000Z" itemprop="datePublished" class="page-time">
+  2016-12-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是函数"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">函数定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数返回值"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数返回值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数命名"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">函数命名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#嵌套函数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">嵌套函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数调用"><span class="post-toc-number">2.</span> <span class="post-toc-text">函数调用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数调用-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">函数调用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方法调用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">方法调用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构造函数调用"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">构造函数调用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#间接调用"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">间接调用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数的实参和形参"><span class="post-toc-number">3.</span> <span class="post-toc-text">函数的实参和形参</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可选形参"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">可选形参</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可变长的实参列表：实参对象"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">可变长的实参列表：实参对象</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-函数调用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">函数调用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年12月26日 20:22" datetime="2016-12-26T12:22:09.000Z"  itemprop="datePublished">2016-12-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>函数的定义会为形参提供实参的值。函数使用它们实参的值来计算返回值，称为该函数调用表达式的值。除了实参之外，每次调用还会拥有另一个值——本次调用的上下文——这就是 this 关键字。<br>如果函数挂在在一个对象上，作为对象的一个属性，就称为它为对象的方法。当通过这个对象来调用函数时，该对象就是此次调用的上下文（context），也就是该函数的this的值。<br>在JS中，函数即对象，程序可以随意操控它们。比如，JS可以把函数赋值给变量，或者作为参数传递给其他函数。因为函数就是对象，所以可以给它们设置属性，甚至调用它们的方法。<br>JS的函数可以嵌套在其他函数定义中，这样它们就可以访问它们被定义时所处的作用域中的任何变量。这意味着JS函数构成了一个闭包（closure）,它给JS带来了非常强劲的编程能力。</p>
+<h1 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h1><h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><p>函数使用 function 关键字来定义；它可以用在函数定义表达式或者函数声明语句里。在两种形式里，函数定义都从 function 关键字开始，其后跟随这些组成部分</p>
+<ul>
+<li>函数名字标识符 —— 函数名称是函数声明语句必须的部分。它的用于就像变量的名字，新定义的函数对象会赋值给这个对象。对函数定义表达式来说，这个名字是可选的；如果存在，该名字只存在与函数体中，并指代该函数对象本身。</li>
+<li>一对圆括号 —— 其中包含由0个或者多个逗号隔开的标识符组成的列表。这些标识符是函数的参数名称，它们就像函数体中的局部变量一样。</li>
+<li>一对花括号 —— 其中包含0条或多条JS语句。这些语句构成了函数体；一旦调用函数，就会执行这些语句。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 函数声明语句  </div><div class="line"><span class="keyword">function</span> printprops(o)&#123;  </div><div class="line">   ... ...  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">// 函数表达式  </div><div class="line">var square = <span class="keyword">function</span>(x )&#123; ... ...&#125;  </div><div class="line">  </div><div class="line">// 函数表达式可以包含名称  </div><div class="line">var f = <span class="keyword">function</span> fact(x) &#123; ... ...&#125;;  </div><div class="line">  </div><div class="line">// 函数表达式也可以作为参数传递给其他函数  </div><div class="line">data.sort(<span class="keyword">function</span>(a,b)&#123;... ...&#125;);  </div><div class="line">  </div><div class="line">// 函数表达式有时定义后立即调用  </div><div class="line">var tensquared = (<span class="keyword">function</span>(x)&#123;<span class="built_in">return</span> x*x;&#125;(10));</div></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>以表达式方式定义的函数，函数的名称是可选的。</li>
+<li>一条函数声明语句实际上声明了一个变量，并把一个函数对象赋值给它。</li>
+<li>相对而言，定义函数表达式时并没有声明一个变量。</li>
+<li>如果一个函数表达式包含名称，函数的局部作用域将会包含一个绑定到函数对象的名称，实际上，函数的名称将会称为函数内部的一个局部变量。</li>
+<li><font color="red">以表达式方式定义的函数在定义之前无法调用</font></li>
+<li><font color="red">函数声明语句被提前到外部脚本或外部函数作用域的顶部，所以以这种方式声明的函数，可以被在它定义之前出现的代码所调用</font>&gt;<h2 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h2>大多数函数包含一条 reuturn 语句。return语句导致函数停止执行，并返回它的表达式的值给调用者。<br>如果return语句没有一个与之相关的表达式，则它返回undefined值。如果一个函数不包含return语句，那它就只执行函数体中每条语句，并返回undefined值给调用者。<h2 id="函数命名"><a href="#函数命名" class="headerlink" title="函数命名"></a>函数命名</h2>通常函数名的第一个字符为小写<h2 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h2>在JS里，函数可以嵌套在其他函数里。<br>嵌套函数可以访问嵌套它们的函数的参数和变量。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> hypotenuse(a, b)&#123;  </div><div class="line">    <span class="keyword">function</span> square(x) &#123; <span class="built_in">return</span> x*x;&#125;  </div><div class="line">    <span class="built_in">return</span> Math.sqrt(square(a) + square(b));  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h1><p>构成函数主体的JS代码在定义时并不会执行，只有调用该函数时，才会执行。<br>有4中方式来调用JS函数：</p>
+<ul>
+<li>作为函数</li>
+<li>作为方法</li>
+<li>作为构造函数</li>
+<li>通过它们的call（）和apply（）方法间接调用<h2 id="函数调用-1"><a href="#函数调用-1" class="headerlink" title="函数调用"></a>函数调用</h2>以函数形式调用的函数通常不使用 this 关键字。<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2>方法调用和函数调用有一个重要的区别，即，调用上下文。<br>属性访问表达式由两部分组成：一个对象和属性名称。在这样的方法调用表达式中，对象为调用上下文，函数体可以使用关键字 this 引用该对象。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var calculator = &#123;  </div><div class="line">    operand1 : 1,  </div><div class="line">    operand2: 1,  </div><div class="line">    add: <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">        this.result = this.operand1 + this.operand2;  </div><div class="line">    &#125;  </div><div class="line">&#125;;  </div><div class="line">  </div><div class="line">calculator.add();  </div><div class="line">calculator.result; //=&gt; 2</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>任何函数只要作为方法调用实际上都会传入一个隐式的实参 —— 这个对象。<br>嵌套的函数不会从调用它的函数中继承this。<br>如果想访问这个外部函数的this值，需要将this的值保存在一个变量里，这个变量和内部函数都同在一个作用域内。通常使用变量self来保存this。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var o = &#123;  </div><div class="line">    m: <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">        var self = this;  </div><div class="line">        console.log(this === o); //=&gt; <span class="literal">true</span>  </div><div class="line">        f();  </div><div class="line">  </div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;  </div><div class="line">            console.log(this === 0); // <span class="literal">false</span>  </div><div class="line">            console.log(self === o); // <span class="literal">true</span>  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="构造函数调用"><a href="#构造函数调用" class="headerlink" title="构造函数调用"></a>构造函数调用</h2><p>果函数或者方法调用之前带有关键字new，它就构成构造函数调用。<br>如果构造函数调用在圆括号内包含一组实参列表，先计算这些实参表达式，然后传入函数内。但如果构造函数没有形参，JS构造函数调用的语法是允许省略实参列表和圆括号的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var o = new Object();  </div><div class="line">var o = new Object;</div></pre></td></tr></table></figure></p>
+<p>构造函数可以使用 this 关键字来引用这个新创建的对象。<br>构造函数通常不使用 return 关键字。然而如果构造函数显示地使用 return 语句返回一个对象，那么调用表达式的值就是这个对象。如果构造函数使用return语句但没有指定返回值，或者返回一个原始值，那么这时将忽略返回值，同时使用这个对象作为调用结果。</p>
+<h2 id="间接调用"><a href="#间接调用" class="headerlink" title="间接调用"></a>间接调用</h2><p>函数也是对象，函数对象也可以包含方法，其中两个方法call() 和  apply() 可以用来间接调用函数。</p>
+<h1 id="函数的实参和形参"><a href="#函数的实参和形参" class="headerlink" title="函数的实参和形参"></a>函数的实参和形参</h1><p>JavaScript中的函数定义并未指定函数形参的类型，函数调用也未对传入的实参值做任何类型检查。JavaScript函数调用甚至不检查传入形参的格式。</p>
+<h2 id="可选形参"><a href="#可选形参" class="headerlink" title="可选形参"></a>可选形参</h2><p>当调用函数的时候传入的实参比函数声明时指定的形参个数要少，剩下的形参都将设置为undefined值。<br>当用这种可选实参来实现函数时，需要将可选实参放在实参列表的最后。</p>
+<h2 id="可变长的实参列表：实参对象"><a href="#可变长的实参列表：实参对象" class="headerlink" title="可变长的实参列表：实参对象"></a>可变长的实参列表：实参对象</h2><p>当调用函数的时候传入的实参个数超过函数定义时的形参个数时，没有办法直接获得命名值的引用。<br>参数对象解决了这个问题。在函数体内，标识符 arguments 是指向实参对象的引用，实参对象是一个类数组对象，可以通过数字下标就能传入函数的实参值，而不用非要用通过名字来得到实参<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> f(x, y, z)&#123;  </div><div class="line">    <span class="keyword">if</span> (arguments.length != 3)&#123;  </div><div class="line">        ... ...  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一个实参可以通过参数名x来获得，也可以通过 arguments[0] 来得到。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-01T02:47:10.766Z" itemprop="dateUpdated">2017年3月1日 10:47</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2016/12/26/函数调用/" target="_blank" rel="external">http://yoursite.com/2016/12/26/函数调用/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="张策">
+            张策
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/26/函数调用/&title=《函数调用》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/26/函数调用/&title=《函数调用》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/26/函数调用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《函数调用》 — Zhangce&url=http://yoursite.com/2016/12/26/函数调用/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/26/函数调用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/01/test/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">test</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/06/Node中的url模块/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Node中的url模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="函数调用" data-title="函数调用" data-url="http://yoursite.com/2016/12/26/函数调用/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'38894403', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Zhangce &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/12/26/函数调用/&title=《函数调用》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/12/26/函数调用/&title=《函数调用》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/26/函数调用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《函数调用》 — Zhangce&url=http://yoursite.com/2016/12/26/函数调用/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/26/函数调用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQY7CMAwFUO5/6c52pBH02+4g1X1ZIShJHgsT23m94nH8Gr33/77OZ7tsYGBg3JZxfBzvnkkW/jxDdf53z2BgYDyHkWwiCZ0ni8WkfG8YGBgYOSPfdHLGw8DAwJgwegfK6jsYGBgYvQ3lZbheAP1SLo6BgXFDRl51//7rf+lvYGBg3IpxFEf+rclBsLwrDAyM1Yw8wOVHxquOieXLHxgYGEsZySZ6AbfXpExWfyVuDAyMRYzyo615Jg2GQqKLgYGxmpEnnJPyWf4zjRoAGBgY6xi9Sw+jothg3befYmBgrGb0CmS9ElseQD8/eXIoxMDAWMf4HEbnJfuc3Ws2nPxvYGBgrGDk4bW6TDWJrW79ZE4MDIxFjF4CmVOrv2i1hfCa5MEYGBg3YcxbiXlTYYIvXMLAwMBYykg22guCVzUemndGMDAwFjGuLehXL2pUk9tq+Q8DA2MTo9eYTE6d8+3mLQQMDIzdjGrAzVueyZWy6kYvOxpiYGDchFFNFCcL9xLRqPCHgYHxAEavlDYJuL15Cv1YDAyMdYxqE7EXRvO2aHlgYGAsZRzFkcxTbSrkoTw6FGJgYKxjTGLapG3ZS4kv+2/BwMC4IaN3aXUSOi8ormFgYDySMbnWkKe4eZiuroWBgYGRH+mqpPJ2332KgYGBMWg69mYo/2QYGBgPYCRJbH4hdXL4y1NiDAyM5zAmk/aKaxPqqOOBgYFxP8YPOiwNy//hNboAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
