@@ -271,7 +271,7 @@
     <link href="http://yoursite.com/2016/07/25/Flex%E5%B8%83%E5%B1%80/"/>
     <id>http://yoursite.com/2016/07/25/Flex布局/</id>
     <published>2016-07-25T14:03:31.000Z</published>
-    <updated>2017-03-01T09:53:57.203Z</updated>
+    <updated>2017-03-01T09:59:10.059Z</updated>
     
     <content type="html"><![CDATA[<p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。<br>任何一个容器都可以指定为Flex布局。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#box&#123;</span></div><div class="line">    display: flex;</div><div class="line">    width: 500px;</div><div class="line">    height: 300px;</div><div class="line">    border: 10px solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="父容器属性"><a href="#父容器属性" class="headerlink" title="父容器属性"></a>父容器属性</h2><p>有六个属性设置在box父容器上，来控制子元素的显示方式；分别是：</p>
@@ -321,8 +321,16 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>是flex-direction 和flex-wrap的简写形式，默认是 row  nowrap<br><code>flex-flow：flex-direction|flex-wrap;</code></p>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>子元素在主轴对齐方式</p>
+<h4 id="wrap-reverse"><a href="#wrap-reverse" class="headerlink" title="wrap-reverse"></a>wrap-reverse</h4><p>第二行在第一行上方<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#box&#123;</span></div><div class="line">        display: flex;</div><div class="line">        flex-direction: row;</div><div class="line">        flex-wrap: wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2016/07/25/Flex布局/a99.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3><p>是flex-direction 和flex-wrap的简写形式，默认是 row  nowrap<br><code>flex-flow：flex-direction|flex-wrap;</code></p>
+<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p>子元素在主轴对齐方式</p>
 <ul>
 <li>flex-start（默认值）：左对齐</li>
 <li>flex-end：右对齐</li>
@@ -344,7 +352,7 @@
             </figure>
 </li>
 </ul>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>交叉轴如何对齐，如果flex-direction：row和row-reverse  那么交叉轴就是y轴，如果是column和column-reverse那么交叉轴是x轴</p>
+<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p>交叉轴如何对齐，如果flex-direction：row和row-reverse  那么交叉轴就是y轴，如果是column和column-reverse那么交叉轴是x轴</p>
 <ul>
 <li>flex-start：交叉轴的起点对齐。</li>
 <li>flex-end：交叉轴的终点对齐。</li>
@@ -364,7 +372,7 @@
                 </div>
                 <div class="image-caption">stretch:子元素不设置高度，那么高度将沾满整个父元素</div>
             </figure>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</li>
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</li>
 <li>flex-start：与交叉轴的起点对齐。</li>
 <li>flex-end：与交叉轴的终点对齐。</li>
 <li>center：与交叉轴的中点对齐。</li>
