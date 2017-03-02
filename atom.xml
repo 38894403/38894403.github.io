@@ -943,6 +943,37 @@ $(&#39;div&#39;).text(&#39;world&#39;)</code></li>
   </entry>
   
   <entry>
+    <title>CSS中行高的继承</title>
+    <link href="http://yoursite.com/2016/01/04/CSS%E4%B8%AD%E8%A1%8C%E9%AB%98%E7%9A%84%E7%BB%A7%E6%89%BF/"/>
+    <id>http://yoursite.com/2016/01/04/CSS中行高的继承/</id>
+    <published>2016-01-04T07:13:11.000Z</published>
+    <updated>2017-03-02T14:10:10.973Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道行高是可以继承的并且行高的单位有四种情况。<br>1、 具体像素值      如：line-height: 16px;<br>2、 em<br>    em是指当前标签设置的字体大小，比如当前标签字体大小是16px，那么2em = 32px；<br>3、 %<br>    %与em一样都是以当前标签设置的字体大小为基准，比如当前标签字体大小是16px，那么line-height: 200%;  则字体大小为32px;<br>4、 什么单位都不带。<br>      与%是一样的，比如当前标签字体大小是16px，line-height:2;则字体大小为32px;</p>
+<p>先来看一个行高正常继承的例子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;  </div><div class="line">&lt;html&gt;  </div><div class="line">&lt;head lang=<span class="string">"en"</span>&gt;  </div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;  </div><div class="line">    &lt;title&gt;&lt;/title&gt;  </div><div class="line">    &lt;style&gt;  </div><div class="line">        * &#123;  </div><div class="line">            margin: 0;  </div><div class="line">            padding: 0;  </div><div class="line">        &#125;  </div><div class="line">        .one &#123;  </div><div class="line">            font-size: 20px;  </div><div class="line">            line-height: 2;  </div><div class="line">            /*line-height: 200%;*/  </div><div class="line">            /*line-height: 2em;*/  </div><div class="line">        &#125;  </div><div class="line">    &lt;/style&gt;  </div><div class="line">&lt;/head&gt;  </div><div class="line">&lt;body&gt;  </div><div class="line">&lt;div class=<span class="string">"one"</span>&gt;  </div><div class="line">    &lt;div class=<span class="string">"two"</span>&gt;看看字体的大小&lt;/div&gt;  </div><div class="line">&lt;/div&gt;  </div><div class="line">&lt;/body&gt;  </div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>在父元素里不管设置line-height:2;line-height:200%; 或者line-height:2em;中其中那一种，都可以发现字体的行高变成40px.<br>如果我们给子元素div也设置字体为25px，父元素的行高为2em或者200%，行高依然是40px。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.one &#123;  </div><div class="line">    font-size: 20px;  </div><div class="line">    line-height: 2em;  </div><div class="line">    /*line-height: 200%;*/  </div><div class="line">&#125;  </div><div class="line">.two &#123;  </div><div class="line">    font-size: 25px;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那么问题来了，如果我们父元素的行高为2(不带单位)，那么行高是否仍然为40px呢？<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.one &#123;  </div><div class="line">    font-size: 20px;  </div><div class="line">    line-height: 2;  </div><div class="line">&#125;  </div><div class="line">.two &#123;  </div><div class="line">    font-size: 25px;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在浏览器中我们可以发现行高变成了50px</p>
+<p>因此我们在设置行高的时候需要注意一下两点：</p>
+<p>1、在设置行高的时候，如果单位是em或者%，那么将来行高会先计算出来结果以后再继承给子元素。</p>
+<p>2 、在设置行高的时候，如果单位是没有单位，那么将来行高会先继承给子元素，然后再计算出行高。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道行高是可以继承的并且行高的单位有四种情况。&lt;br&gt;1、 具体像素值      如：line-height: 16px;&lt;br&gt;2、 em&lt;br&gt;    em是指当前标签设置的字体大小，比如当前标签字体大小是16px，那么2em = 32px；&lt;br&gt;3、 %&lt;br&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>base标签</title>
     <link href="http://yoursite.com/2015/06/23/base%E6%A0%87%E7%AD%BE/"/>
     <id>http://yoursite.com/2015/06/23/base标签/</id>
