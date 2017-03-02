@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Angular的双向数据绑定 | Zhangce | 简单不先于复杂，而是在复杂之后</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Angular">
+    <meta name="description" content="Angular JS (Angular.JS) 是一组用来开发Web页面的框架、模板以及数据绑定和丰富UI组件。它支持整个开发进程，提供web应用的架构，无需进行手工DOM操作。 AngularJS很小，只有60K，兼容主流浏览器，与 jQuery 配合良好。双向数据绑定可能是AngularJS最酷最实用的特性,将MVC的原理展现地淋漓尽致.
+AngularJS的工作原理是:HTML模板将会被浏览">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular的双向数据绑定">
+<meta property="og:url" content="http://yoursite.com/2017/01/04/Angular的双向数据绑定/index.html">
+<meta property="og:site_name" content="Zhangce">
+<meta property="og:description" content="Angular JS (Angular.JS) 是一组用来开发Web页面的框架、模板以及数据绑定和丰富UI组件。它支持整个开发进程，提供web应用的架构，无需进行手工DOM操作。 AngularJS很小，只有60K，兼容主流浏览器，与 jQuery 配合良好。双向数据绑定可能是AngularJS最酷最实用的特性,将MVC的原理展现地淋漓尽致.
+AngularJS的工作原理是:HTML模板将会被浏览">
+<meta property="og:updated_time" content="2017-03-02T13:17:48.714Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular的双向数据绑定">
+<meta name="twitter:description" content="Angular JS (Angular.JS) 是一组用来开发Web页面的框架、模板以及数据绑定和丰富UI组件。它支持整个开发进程，提供web应用的架构，无需进行手工DOM操作。 AngularJS很小，只有60K，兼容主流浏览器，与 jQuery 配合良好。双向数据绑定可能是AngularJS最酷最实用的特性,将MVC的原理展现地淋漓尽致.
+AngularJS的工作原理是:HTML模板将会被浏览">
+    
+        <link rel="alternative" href="/atom.xml" title="Zhangce" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张策</h5>
+          <a href="mailto:79_qijiu@sina.com" title="79_qijiu@sina.com" class="mail">79_qijiu@sina.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/38894403" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/ispoiu" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Angular的双向数据绑定</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Angular的双向数据绑定</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-04T15:01:08.000Z" itemprop="datePublished" class="page-time">
+  2017-01-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Angular/">Angular</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-Angular的双向数据绑定"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Angular的双向数据绑定</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月04日 23:01" datetime="2017-01-04T15:01:08.000Z"  itemprop="datePublished">2017-01-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Angular/">Angular</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Angular JS (Angular.JS) 是一组用来开发Web页面的框架、模板以及数据绑定和丰富UI组件。它支持整个开发进程，提供web应用的架构，无需进行手工DOM操作。 AngularJS很小，只有60K，兼容主流浏览器，与 jQuery 配合良好。双向数据绑定可能是AngularJS最酷最实用的特性,将MVC的原理展现地淋漓尽致.</p>
+<p>AngularJS的工作原理是:HTML模板将会被浏览器解析到DOM中, DOM结构成为AngularJS编译器的输入。AngularJS将会遍历DOM模板, 来生成相应的NG指令,所有的指令都负责针对view(即HTML中的ng-model)来设置数据绑定。因此, NG框架是在DOM加载完成之后, 才开始起作用的. </p>
+<p>在html中:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;body ng-app=<span class="string">"ngApp"</span>&gt;</div><div class="line">	&lt;div ng-controller=<span class="string">"ngCtl"</span>&gt;</div><div class="line">		&lt;label ng-model=<span class="string">"myLabel"</span>&gt;&lt;/label&gt;</div><div class="line">		&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ng-model=<span class="string">"myInput"</span> /&gt;</div><div class="line">		&lt;button ng-model=<span class="string">"myButton"</span> ng-click=<span class="string">"btnClicked"</span>&gt;&lt;/button&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>在js中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// angular app</div><div class="line">var app = angular.module(<span class="string">"ngApp"</span>, [], <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	console.log(<span class="string">"ng-app : ngApp"</span>);</div><div class="line">&#125;);</div><div class="line">// angular controller</div><div class="line">app.controller(<span class="string">"ngCtl"</span>, [ <span class="string">'$scope'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</div><div class="line">	console.log(<span class="string">"ng-controller : ngCtl"</span>);</div><div class="line">	<span class="variable">$scope</span>.myLabel = <span class="string">"text for label"</span>;</div><div class="line">	<span class="variable">$scope</span>.myInput = <span class="string">"text for input"</span>;</div><div class="line">	<span class="variable">$scope</span>.btnClicked = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">		console.log(<span class="string">"Label is "</span> + <span class="variable">$scope</span>.myLabel);</div><div class="line">	&#125;</div><div class="line">&#125;]);</div></pre></td></tr></table></figure></p>
+<p>如上,我们在html中先定义一个angular的app,指定一个angular的controller,则该controller会对应于一个作用域(可以用$scope前缀来指定作用域中的属性和方法等). 则在该ngCtl的作用域内的HTML标签, 其值或者操作都可以通过$scope的方式跟js中的属性和方法进行绑定. </p>
+<p>这样, 就实现了NG的双向数据绑定: 即HTML中呈现的view与AngularJS中的数据是一致的. 修改其一, 则对应的另一端也会相应地发生变化.</p>
+<p>这样的方式,使用起来真的非常方便. 我们仅关心HTML标签的样式, 及其对应在js中angular controller作用域下绑定的属性和方法. 仅此而已, 将众多复杂的DOM操作全都省略掉了.</p>
+<p>这样的思想,其实跟jQuery的DOM查询和操作是完全不一样的, 因此也有很多人建议用AngularJS的时候,不要混合使用jQuery. 当然, 二者各有优劣, 使用哪个就要看自己的选择了.</p>
+<p>NG中的app相当于一个模块module, 在每个app中可以定义多个controller, 每个controller都会有各自的作用域空间,不会相互干扰.</p>
+<p>看下边这段html:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-app=<span class="string">"dataApp"</span>&gt;</div><div class="line">    单价： &lt;input <span class="built_in">type</span>=<span class="string">"number"</span> min=0 ng-model=<span class="string">"price"</span> ng-init=<span class="string">"price = 299"</span>&gt;&lt;br&gt;</div><div class="line">    数量： &lt;input <span class="built_in">type</span>=<span class="string">"number"</span> min=0 ng-model=<span class="string">"quantity"</span> ng-init=<span class="string">"quantity = 1"</span>&gt;&lt;br&gt;</div><div class="line">    总价： &#123;&#123; quantity * price &#125;&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>你会惊喜地发现, 甚至不用写一行的JS代码, 即可完成计算并在界面展示结果.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">即: 在前端html中使用&#123;&#123; &#125;&#125;括起来的变量, 是跟AngularJS中对应的controller作用域内的属性绑定在一起的. 实际上,&#123;&#123;&#125;&#125;等同于ng-bind指令, 即ng-bind=<span class="string">"myData"</span>就能将NG中的myData数据跟前端对应元素绑定在一起.这样的话, 可以非常方便地做到从NG中获取任意数据并实时展示在页面上了.</div></pre></td></tr></table></figure></p>
+<p>另外, $scope对象还提供了一个$apply方法, 用于进行html页面上的更新, 使用方式为:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$scope</span>.<span class="variable">$apply</span>(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	<span class="variable">$scope</span>.myValue = <span class="string">"NewValue"</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>$scope对象, 我们可以理解为NG框架中的一个作用域对象, 在该作用域内可以做到数据和视图的相互绑定, 同时又能与其他$scope对象的作用域隔离开来.</p>
+<p>当然, $scope也可以实现继承, 这部分内容在以后接触NG框架中其他对象的时候再分别做记录.</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-02T13:17:48.714Z" itemprop="dateUpdated">2017年3月2日 21:17</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/01/04/Angular的双向数据绑定/" target="_blank" rel="external">http://yoursite.com/2017/01/04/Angular的双向数据绑定/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="张策">
+            张策
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/">Angular</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/&title=《Angular的双向数据绑定》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/&title=《Angular的双向数据绑定》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/04/Angular的双向数据绑定/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Angular的双向数据绑定》 — Zhangce&url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/16/JavaScript总结/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JavaScript总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/26/函数调用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">函数调用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="Angular的双向数据绑定" data-title="Angular的双向数据绑定" data-url="http://yoursite.com/2017/01/04/Angular的双向数据绑定/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'38894403', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Zhangce &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/&title=《Angular的双向数据绑定》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/&title=《Angular的双向数据绑定》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/04/Angular的双向数据绑定/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Angular的双向数据绑定》 — Zhangce&url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/04/Angular的双向数据绑定/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aQW4CMRAEQP7/aXKNFC3pHi9RsMsnhHaNi0Nr7PHjEY9nMK6e//7Nz8+v37p5YGBgfCwjWVyy9KuZr2Z4vYZ8bRgYGOcwkkW0YZoH62wGDAwMjPWpk8BN3sLAwMBYD9zXMfp6oXkQY2BgYCSb2JXFtedmb9yLY2BgfCBjNvXffH5LfwMDA+OjGM9y5CVjvsTn8sDAwNibkQdc0oBsL0yslJIYGBhnMmaxm284Z0VhsWHGwMDYlJG/1u4co4gMCsqo2YmBgbE1I19cG4LJTyZ/2bB8xMDAOIaRb1Nn4dtesCjaBhgYGNsx8qDMf6A40F/eh2JgYJzGaBsDt535jYrF2/obGBgY/56Rx2VLSsrEZIlFHGNgYGzHKAqv8vArbwPkS1+6LYKBgbEdY3Yctn7Bot3iYmBgnMBYb0kmi2ijuS0QMTAw9masXFGdHcblwV20IjAwMA5gFOVX+eT7QvbyuA0DA2M7RhKXs4Oz2QztzI/ZdBgYGB/LWA/QlTKx7rgmZ4cYGBhbM/Ita/LW7OpGzcPAwDiA0R6E5fG68nz+92FgYOzKeJZjFqwrh3FRcYmBgbE1Ix8tqW0AJC3MdrONgYGxEyMJyvzzrBl5Q/mIgYFxAKMNvvW4nBV5v+zFMTAwMMqAzo/tZqvCwMDAyMuy/NrELGqjvwkDA+MARnsloo3X2RWNop2JgYGxNWO2dZwFaN5gaNsMGBgYmzK+AHUvvCq1IinRAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
