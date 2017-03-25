@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Angular���� | Zhangce | 简单不先于复杂，而是在复杂之后</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Angular">
+    <meta name="description" content="ָ�Directive
+�� ng �У�ͨ��ָ����չ�� HTML
+ng ����Ϊ HTML �ṩ��һ���Ѿ���һ�����ܵ����ԣ�����֮Ϊָ��
+
+
+ng-app
+ng Ӧ�ó������������ڱ�ʶ
+
+
+ng-init+ 
+ng-bind
+ng-model
+һ�����ڽ�ģ�����ݺͱ����ؼ��� value ��������
+�������ؼ���">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular����">
+<meta property="og:url" content="http://yoursite.com/2017/03/24/Angular命令/index.html">
+<meta property="og:site_name" content="Zhangce">
+<meta property="og:description" content="ָ�Directive
+�� ng �У�ͨ��ָ����չ�� HTML
+ng ����Ϊ HTML �ṩ��һ���Ѿ���һ�����ܵ����ԣ�����֮Ϊָ��
+
+
+ng-app
+ng Ӧ�ó������������ڱ�ʶ
+
+
+ng-init+ 
+ng-bind
+ng-model
+һ�����ڽ�ģ�����ݺͱ����ؼ��� value ��������
+�������ؼ���">
+<meta property="og:image" content="http://yoursite.com/2017/03/24/Angular命令/$scope.jpg">
+<meta property="og:updated_time" content="2017-03-25T03:29:41.121Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular����">
+<meta name="twitter:description" content="ָ�Directive
+�� ng �У�ͨ��ָ����չ�� HTML
+ng ����Ϊ HTML �ṩ��һ���Ѿ���һ�����ܵ����ԣ�����֮Ϊָ��
+
+
+ng-app
+ng Ӧ�ó������������ڱ�ʶ
+
+
+ng-init+ 
+ng-bind
+ng-model
+һ�����ڽ�ģ�����ݺͱ����ؼ��� value ��������
+�������ؼ���">
+<meta name="twitter:image" content="http://yoursite.com/2017/03/24/Angular命令/$scope.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Zhangce" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张策</h5>
+          <a href="mailto:79_qijiu@sina.com" title="79_qijiu@sina.com" class="mail">79_qijiu@sina.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/38894403" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/ispoiu" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Angular����</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Angular����</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-24T14:23:51.000Z" itemprop="datePublished" class="page-time">
+  2017-03-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Angular/">Angular</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AngularJS-Debug"><span class="post-toc-number">1.</span> <span class="post-toc-text">AngularJS Debug</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#��-scope-g�Ͷ������ظ�-window"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">�� $scope ģ�Ͷ������ظ� window</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Chrome-������AngularJS-Batarang"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Chrome ������AngularJS Batarang</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ָ�Directive"><span class="post-toc-number">2.</span> <span class="post-toc-text">ָ�Directive</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ָ����ʹ����ʽ"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">ָ����ʹ����ʽ</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#����ָ��"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">����ָ��</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#��������Controller"><span class="post-toc-number">3.</span> <span class="post-toc-text">��������Controller</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#���������������ַ�ʽ"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">���������������ַ�ʽ</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#���λ��ֿ�����"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">���λ��ֿ�����</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#��ͼg�ͣ�View-Model��-scope"><span class="post-toc-number">4.</span> <span class="post-toc-text">��ͼģ�ͣ�View Model��: $scope</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#��������-scope"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">�������� $scope</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ViewModel"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">ViewModel</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#����g��������"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">����ģ��������</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#g�飺Module"><span class="post-toc-number">5.</span> <span class="post-toc-text">ģ�飺Module</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#����g��"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">����ģ��</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#���λ���g��"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">���λ���ģ��</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#���ض���g��"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">���ض���ģ��</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#��������Filter"><span class="post-toc-number">6.</span> <span class="post-toc-text">��������Filter</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#���u�����"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">���ù�����</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#�Զ���������"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">�Զ���������</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Angular命令"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Angular����</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月24日 22:23" datetime="2017-03-24T14:23:51.000Z"  itemprop="datePublished">2017-03-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Angular/">Angular</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <ul>
+<li>ָ�Directive<ul>
+<li>�� ng �У�ͨ��ָ����չ�� HTML</li>
+<li>ng ����Ϊ HTML �ṩ��һ���Ѿ���һ�����ܵ����ԣ�����֮Ϊָ��</li>
+</ul>
+</li>
+<li>ng-app<ul>
+<li>ng Ӧ�ó������������ڱ�ʶ</li>
+</ul>
+</li>
+<li>ng-init<br>+ </li>
+<li>ng-bind</li>
+<li>ng-model<ul>
+<li>һ�����ڽ�ģ�����ݺͱ����ؼ��� value ��������</li>
+<li>�������ؼ��� value �ı���ʱ����ģ������Ҳ���ű�</li>
+<li>��ģ�����ݸı���ʱ�򣬲����������ؼ��� value �����仯���������а��������˸�ģ�����ݵ�Ԫ�ض������ű�</li>
+</ul>
+</li>
+<li>ng-class<ul>
+<li>ʹ�ù�����ng-class=”{����: bool��������, ����: bool��������}”</li>
+<li>�� bool ��������Ϊ true �� ���ø�����</li>
+<li>�� bool ��������Ϊ false ��ȥ��������</li>
+</ul>
+</li>
+<li>ng-repeat</li>
+<li>ng-click</li>
+<li>angular.module</li>
+<li>controller</li>
+</ul>
+<hr>
+<h2 id="AngularJS-Debug"><a href="#AngularJS-Debug" class="headerlink" title="AngularJS Debug"></a>AngularJS Debug</h2><h3 id="��-scope-g�Ͷ������ظ�-window"><a href="#��-scope-g�Ͷ������ظ�-window" class="headerlink" title="�� $scope ģ�Ͷ������ظ� window"></a>�� $scope ģ�Ͷ������ظ� window</h3><h3 id="Chrome-������AngularJS-Batarang"><a href="#Chrome-������AngularJS-Batarang" class="headerlink" title="Chrome ������AngularJS Batarang"></a>Chrome ������AngularJS Batarang</h3><ol>
+<li>��װ</li>
+<li>��װ����������������</li>
+<li>����֮ǰһ��Ҫ�� http ��������ʽ������Ҫ���Ե�ҳ��</li>
+<li>�ڿ���̨���ҵ���AngularJS ѡ�</li>
+<li>��ѡ Enable ���ã��������ɹ��������������´�����һ�£�</li>
+</ol>
+<hr>
+<h2 id="ָ�Directive"><a href="#ָ�Directive" class="headerlink" title="ָ�Directive"></a>ָ�Directive</h2><p>AngularJS ͨ������Ϊ ָ�� ������������չ HTML��<br>����������ʽһ��Ϊ����ǰ׺ <code>ng-xxx</code> �� HTML ���ԡ�</p>
+<h3 id="ָ����ʹ����ʽ"><a href="#ָ����ʹ����ʽ" class="headerlink" title="ָ����ʹ����ʽ"></a>ָ����ʹ����ʽ</h3><ul>
+<li>ng-xxx �����Ա��������Ǳ�׼�ж���������</li>
+<li>�ܶ��������޷�ͨ���﷨У��</li>
+<li>HTML5 ������չ�����ԣ��� <code>data-</code> ��ͷ</li>
+<li>�� ng �п���ʹ�� <code>data-ng-</code> ��Ϊǰ׺������ҳ�� HTML5 ��Ч</li>
+<li>����Ч����ͬ</li>
+</ul>
+<h3 id="����ָ��"><a href="#����ָ��" class="headerlink" title="����ָ��"></a>����ָ��</h3><p>AngularJS �����˺ܶ�ָ�������ǿ HTML��������һЩ��������ָ���Ľ��ܡ�</p>
+<ul>
+<li>ngApp</li>
+<li>ngController</li>
+<li>ngInit</li>
+<li>ngBind</li>
+<li>ng-bind</li>
+<li>ng-non-bindable</li>
+<li>ngBindHtml</li>
+<li>ngRepeat<ul>
+<li>��ͨ�����ظ���������</li>
+</ul>
+</li>
+<li>ng-class</li>
+<li>ng-class-even</li>
+<li>ng-class-odd</li>
+<li>ng-hide-show-if-switch</li>
+<li>ng-src</li>
+<li>ng-checked : ��ѡ/��ѡ�Ƿ�ѡ�У�ֻ�ǵ�����������</li>
+<li>ng-disabled : �Ƿ�����</li>
+<li>ng-readonly : �Ƿ�ֻ��</li>
+<li>ng-selected : �Ƿ�ѡ�У�ֻ�ǵ������ݰ���</li>
+<li>ng-click �����굥��</li>
+<li>ng-blur ��ʧȥ����</li>
+<li>ng-focus ���õ�����</li>
+<li>ng-change �������ı�</li>
+<li>ng-copy ����������</li>
+<li>ng-dblclick ������˫��</li>
+<li>ng-submit�������ύ</li>
+<li>ng-copy</li>
+<li>ng-cut</li>
+<li>ng-paste</li>
+<li>ng-keydown</li>
+<li>ng-keyup</li>
+<li>ng-mousedown</li>
+<li>ng-mouseenter</li>
+<li>ng-mouseleave</li>
+<li>ng-mouseover</li>
+<li>ng-mouseup</li>
+</ul>
+<hr>
+<h2 id="��������Controller"><a href="#��������Controller" class="headerlink" title="��������Controller"></a>��������Controller</h2><ul>
+<li>ng �еĿ����������� scope ���в���<ul>
+<li>������ʼ�����ݺͶ����¼���Ӧ������</li>
+</ul>
+</li>
+<li>ng ��������ҵ���߼�������ͼ���Ĺؼ�</li>
+<li>controller ���� scope��View ��չ�� scope ������</li>
+<li>��ͳǰ�˳����д������ӵ� DOM �����߼�����ת���ɶ� scope �Ĳ���</li>
+</ul>
+<h3 id="���������������ַ�ʽ"><a href="#���������������ַ�ʽ" class="headerlink" title="���������������ַ�ʽ"></a>���������������ַ�ʽ</h3><p>��һ�֣���ͳ��ʽ��ʹ��ȫ�ֺ���������������1.5 ֮���ѱ���������</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoCtrl</span>(<span class="params">$scope</span>) </span>&#123;</div><div class="line">  <span class="comment">// code here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>�ڶ��֣�������ĳ��ģ����</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'DemoApp'</span>, [])</div><div class="line">  .controller(<span class="string">'DemoCtrl'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</div><div class="line">    <span class="comment">// code here</span></div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<p>�����֣�����ȷ�ķ�ʽ</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ������Ϊ����ѹ������ע������ʧ�������ķ�ʽ���ǽ��ڶ�����������һ������</span></div><div class="line">angular.module(<span class="string">'DemoApp'</span>, [])</div><div class="line">  .controller(<span class="string">'DemoCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'$log'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $log</span>) </span>&#123;</div><div class="line">    <span class="comment">// code here</span></div><div class="line">  &#125;])</div></pre></td></tr></table></figure>
+<h3 id="���λ��ֿ�����"><a href="#���λ��ֿ�����" class="headerlink" title="���λ��ֿ�����"></a>���λ��ֿ�����</h3><p>һ��ҳ���У����ղ�ͬ�Ĺ���ҵ�񻮷ֲ�ͬ�Ŀ�������</p>
+<hr>
+<h2 id="��ͼg�ͣ�View-Model��-scope"><a href="#��ͼg�ͣ�View-Model��-scope" class="headerlink" title="��ͼģ�ͣ�View Model��: $scope"></a>��ͼģ�ͣ�View Model��: $scope</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2017/03/24/Angular命令/$scope.jpg" alt="scope" title="">
+                </div>
+                <div class="image-caption">scope</div>
+            </figure>
+<ul>
+<li>$scope ��������ͼ������֮���Ľ�ˮ��ճ�ϼ�</li>
+<li>��ͼ�Ϳ�����֮������������</li>
+<li>��������ͼ�Ϳ�����֮�䴫������</li>
+<li>������¶����ģ�ͣ����ݡ���Ϊ��</li>
+<li>����ģ�����ݵı仯��������Ӧ�Ķ��� <code>$scope.$watch</code></li>
+</ul>
+<h3 id="��������-scope"><a href="#��������-scope" class="headerlink" title="�������� $scope"></a>�������� $scope</h3><p>����ԭ�ͳ������ݺ���Ϊ��</p>
+<ul>
+<li>����</li>
+<li>��Ϊ</li>
+</ul>
+<h3 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h3><p>ng �ٷ����Լ�����Ϊһ�� MVC ���ܡ�</p>
+<p>�ܶ࿪��ʹ���߰�����֮Ϊ MVVM ���ܡ�</p>
+<ul>
+<li>$scope ʵ���Ͼ��� MVVM ����ν�� VM����ͼģ�ͣ�</li>
+<li>��ʽ��Ϊ $scope �� ng �д���ʹ�������ǹ��� c �ĸ�����Ժܶ��˰� ng ��֮Ϊ mvvm ����</li>
+<li>��һ�㵹������ν</li>
+</ul>
+<h3 id="����g��������"><a href="#����g��������" class="headerlink" title="����ģ��������"></a>����ģ��������</h3><hr>
+<h2 id="g�飺Module"><a href="#g�飺Module" class="headerlink" title="ģ�飺Module"></a>ģ�飺Module</h2><ul>
+<li>ģ�鶨����һ��Ӧ�ó���</li>
+<li>ģ����Ӧ�ó����в�ͬ���ֵ�����</li>
+<li>ģ����Ӧ�ÿ�����������</li>
+<li>������ͨ������һ��ģ��</li>
+</ul>
+<p>ng ��ģ������������Ҫ��Ŀ�ľ���Ϊ�˽���ԭ��ȫ�ֶ����Ŀ�������Ⱦ�����⣬<br>����һ��Ŀ�ľ�����������ģ������ʽ���ּܹ���</p>
+<blockquote>
+<p>����ͨ�� <code>angular.module()</code> ��������ģ��<br><strong>ע��</strong>���÷���ֻ���ڴ�����������ʱ�Żᴴ��ģ�飬����Ϊ��ȡ����ģ��</p>
+</blockquote>
+<h3 id="����g��"><a href="#����g��" class="headerlink" title="����ģ��"></a>����ģ��</h3><p>����һ��ģ�飺</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ע�⣺����ָ���ڶ����������������ɻ�ȡ�Ѷ�����ģ��</span></div><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>, [])</div></pre></td></tr></table></figure>
+<p>��ȡ����ģ�飺</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>)</div></pre></td></tr></table></figure>
+<p>������������ģ����ģ�飺</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>, [<span class="string">'Module1'</span>, <span class="string">'Module2'</span>])</div></pre></td></tr></table></figure>
+<h3 id="���λ���g��"><a href="#���λ���g��" class="headerlink" title="���λ���ģ��"></a>���λ���ģ��</h3><h3 id="���ض���g��"><a href="#���ض���g��" class="headerlink" title="���ض���ģ��"></a>���ض���ģ��</h3><ul>
+<li>angular.bootstrap(document, [‘demo’])</li>
+<li>angular.module(‘MainModule’, [‘Module1’, ‘Module2’, ‘Module3’[,ModuleName]])</li>
+</ul>
+<hr>
+<h2 id="��������Filter"><a href="#��������Filter" class="headerlink" title="��������Filter"></a>��������Filter</h2><p>ng ���ṩ�˹��������������þ����������㷽���ĸ�ʽ�����ݵġ�����ʹ���﷨���£�</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; express | filter-name &#125;&#125;</div><div class="line">&#123;&#123; express | filter-name : arg &#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="���u�����"><a href="#���u�����" class="headerlink" title="���ù�����"></a>���ù�����</h3><ul>
+<li>currency<ul>
+<li>�����ϲ���</li>
+</ul>
+</li>
+<li>number<ul>
+<li>����</li>
+</ul>
+</li>
+<li>date<ul>
+<li>����</li>
+</ul>
+</li>
+<li>json</li>
+<li>uppercase<ul>
+<li>��д</li>
+</ul>
+</li>
+<li>lowercase<ul>
+<li>Сд</li>
+</ul>
+</li>
+<li>orderBy<ul>
+<li>����</li>
+</ul>
+</li>
+<li>limitTo<ul>
+<li>����</li>
+</ul>
+</li>
+<li>filter<ul>
+<li>�����������Ĺ�����</li>
+</ul>
+</li>
+</ul>
+<h3 id="�Զ���������"><a href="#�Զ���������" class="headerlink" title="�Զ���������"></a>�Զ���������</h3><p>�������ı��ʾ���һ��������������һ�������������㷵��һ���������������ݡ�</p>
+<blockquote>
+<p>�ĵ���<a href="https://docs.angularjs.org/api/ng/type/angular.Module" target="_blank" rel="external">https://docs.angularjs.org/api/ng/type/angular.Module</a></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">angular</div><div class="line">  .module(<span class="string">'module'</span>)</div><div class="line">  .filter(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">      <span class="comment">// code here</span></div><div class="line">      <span class="keyword">return</span> xxx</div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-25T03:29:41.121Z" itemprop="dateUpdated">2017年3月25日 11:29</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/03/24/Angular命令/" target="_blank" rel="external">http://yoursite.com/2017/03/24/Angular命令/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="张策">
+            张策
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/">Angular</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/03/24/Angular命令/&title=《Angular����》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/03/24/Angular命令/&title=《Angular����》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/03/24/Angular命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Angular����》 — Zhangce&url=http://yoursite.com/2017/03/24/Angular命令/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/03/24/Angular命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/13/Angular框架/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Angular框架</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="Angular命令" data-title="Angular����" data-url="http://yoursite.com/2017/03/24/Angular命令/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'38894403', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Zhangce &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/03/24/Angular命令/&title=《Angular����》 — Zhangce&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/03/24/Angular命令/&title=《Angular����》 — Zhangce&source=blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/03/24/Angular命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Angular����》 — Zhangce&url=http://yoursite.com/2017/03/24/Angular命令/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/03/24/Angular命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3a0YrjMAwF0Pn/n+7CvC517pU7hTjHT6U4iU8Kqiz55ycer9/x7pv15//H+inrOVsDAwPjtozXcryb095zNj9ZGwYGxnMY6yC7fsA67CZ3Tu55sWYMDAyMN6lhnvyt56wDLgYGBkbLyHnJN/n2GAMDAyPZxH4qodwv2GFgYDyN0TYGvvn5D/sbGBgYN2G8yjG7tl1cvSoMDIyjGbNS1+wgxfo4xQxZdEExMDBuzpi1BNrFtXOGRTcMDIxDGTsX523LnWuj7S4GBsahjDb85ch8G5y3OS+2rxgYGI9hJGlcvrj9Fml0gAwDA+MBjJ1Ft9vRT5XeMDAwnsPIg90sacvLbTvBFwMD42zGLI3bP142awZcnBnBwMA4lNEW6/MEbnafHHPxv4GBgXEQo034dpa1DrU722AMDIwnMNoH7G99kzBdH7bAwMB4JCMPfBe5Z9ngrEkYGBiPYdQJWXk47LPHzoY1PAwMjBsyksW1xa9Zotk2NS9+GQwMjIMYs/bk/iLycl70OjAwMB7DyMtns7D7dwc1MDAwzma0oa1tFeTBOr/24jVhYGAcx3iVo3grozZnXqorOp8YGBg3Z8w2rkmCmBfyouMUZVsCAwPjPEYbZNumZr71TbbBw38PDAyMIxjfP1Qx+wd4i8TAwMAol5I0BtpAHKWGGBgYGBtJXjvzSwEXAwPjVoydZsBsEfvNSwwMjOcw2sZAW4BrnzIrw2FgYBzK+AeQX61jFvu8pwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
