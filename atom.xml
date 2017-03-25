@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-25T03:29:41.121Z</updated>
+  <updated>2017-03-25T03:33:43.737Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/03/24/Angular%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2017/03/24/Angular命令/</id>
     <published>2017-03-24T14:23:51.000Z</published>
-    <updated>2017-03-25T03:29:41.121Z</updated>
+    <updated>2017-03-25T03:33:43.737Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>ָ�Directive<ul>
@@ -37,9 +37,12 @@
 <li>ng-model<ul>
 <li>һ�����ڽ�ģ�����ݺͱ����ؼ��� value ��������</li>
 <li>�������ؼ��� value �ı���ʱ����ģ������Ҳ���ű�</li>
-<li>��ģ�����ݸı���ʱ�򣬲����������ؼ��� value �����仯���������а��������˸�ģ�����ݵ�Ԫ�ض������ű�</li>
+<li>��ģ�����ݸı���ʱ�򣬲����������ؼ��� value �����仯���������а��������˸�ģ�����ݵ�Ԫ�ض�</li>
 </ul>
 </li>
+</ul>
+<p>�����ű�</p>
+<ul>
 <li>ng-class<ul>
 <li>ʹ�ù�����ng-class=”{����: bool��������, ����: bool��������}”</li>
 <li>�� bool ��������Ϊ true �� ���ø�����</li>
