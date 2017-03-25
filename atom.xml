@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-25T03:33:43.737Z</updated>
+  <updated>2017-03-25T03:36:48.664Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,37 +16,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Angular����</title>
+    <title>Angular命令</title>
     <link href="http://yoursite.com/2017/03/24/Angular%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2017/03/24/Angular命令/</id>
     <published>2017-03-24T14:23:51.000Z</published>
-    <updated>2017-03-25T03:33:43.737Z</updated>
+    <updated>2017-03-25T03:36:48.664Z</updated>
     
     <content type="html"><![CDATA[<ul>
-<li>ָ�Directive<ul>
-<li>�� ng �У�ͨ��ָ����չ�� HTML</li>
-<li>ng ����Ϊ HTML �ṩ��һ���Ѿ���һ�����ܵ����ԣ�����֮Ϊָ��</li>
+<li>指令：Directive<ul>
+<li>在 ng 中，通过指令扩展了 HTML</li>
+<li>ng 就是为 HTML 提供了一大堆具有一定功能的属性：被称之为指令</li>
 </ul>
 </li>
 <li>ng-app<ul>
-<li>ng Ӧ�ó������������ڱ�ʶ</li>
+<li>ng 应用程序启动的入口标识</li>
 </ul>
 </li>
 <li>ng-init<br>+ </li>
 <li>ng-bind</li>
 <li>ng-model<ul>
-<li>һ�����ڽ�ģ�����ݺͱ����ؼ��� value ��������</li>
-<li>�������ؼ��� value �ı���ʱ����ģ������Ҳ���ű�</li>
-<li>��ģ�����ݸı���ʱ�򣬲����������ؼ��� value �����仯���������а��������˸�ģ�����ݵ�Ԫ�ض�</li>
+<li>一般用于将模型数据和表单控件的 value 绑定起来</li>
+<li>当表单控件的 value 改变的时候，模型数据也跟着变</li>
+<li>当模块数据改变的时候，不仅仅表单控件的 value 发生变化，而且所有绑定引用了该模型数据的元素都</li>
 </ul>
 </li>
 </ul>
-<p>�����ű�</p>
+<p>会跟着变</p>
 <ul>
 <li>ng-class<ul>
-<li>ʹ�ù�����ng-class=”{����: bool��������, ����: bool��������}”</li>
-<li>�� bool ��������Ϊ true �� ���ø�����</li>
-<li>�� bool ��������Ϊ false ��ȥ��������</li>
+<li>使用规则：ng-class=”{类名: bool类型数据, 类名: bool类型数据}”</li>
+<li>当 bool 类型数据为 true 则 作用该类名</li>
+<li>当 bool 类型数据为 false 则去除给类名</li>
 </ul>
 </li>
 <li>ng-repeat</li>
@@ -55,23 +55,23 @@
 <li>controller</li>
 </ul>
 <hr>
-<h2 id="AngularJS-Debug"><a href="#AngularJS-Debug" class="headerlink" title="AngularJS Debug"></a>AngularJS Debug</h2><h3 id="��-scope-g�Ͷ������ظ�-window"><a href="#��-scope-g�Ͷ������ظ�-window" class="headerlink" title="�� $scope ģ�Ͷ������ظ� window"></a>�� $scope ģ�Ͷ������ظ� window</h3><h3 id="Chrome-������AngularJS-Batarang"><a href="#Chrome-������AngularJS-Batarang" class="headerlink" title="Chrome ������AngularJS Batarang"></a>Chrome ������AngularJS Batarang</h3><ol>
-<li>��װ</li>
-<li>��װ����������������</li>
-<li>����֮ǰһ��Ҫ�� http ��������ʽ������Ҫ���Ե�ҳ��</li>
-<li>�ڿ���̨���ҵ���AngularJS ѡ�</li>
-<li>��ѡ Enable ���ã��������ɹ��������������´�����һ�£�</li>
+<h2 id="AngularJS-Debug"><a href="#AngularJS-Debug" class="headerlink" title="AngularJS Debug"></a>AngularJS Debug</h2><h3 id="将-scope-模型对象挂载给-window"><a href="#将-scope-模型对象挂载给-window" class="headerlink" title="将 $scope 模型对象挂载给 window"></a>将 $scope 模型对象挂载给 window</h3><h3 id="Chrome-插件：AngularJS-Batarang"><a href="#Chrome-插件：AngularJS-Batarang" class="headerlink" title="Chrome 插件：AngularJS Batarang"></a>Chrome 插件：AngularJS Batarang</h3><ol>
+<li>安装</li>
+<li>安装结束重启下浏览器</li>
+<li>调试之前一定要以 http 服务的形式打开你要调试的页面</li>
+<li>在控制台中找到：AngularJS 选项卡</li>
+<li>勾选 Enable 启用（如果不成功，把浏览器重新打开试一下）</li>
 </ol>
 <hr>
-<h2 id="ָ�Directive"><a href="#ָ�Directive" class="headerlink" title="ָ�Directive"></a>ָ�Directive</h2><p>AngularJS ͨ������Ϊ ָ�� ������������չ HTML��<br>����������ʽһ��Ϊ����ǰ׺ <code>ng-xxx</code> �� HTML ���ԡ�</p>
-<h3 id="ָ����ʹ����ʽ"><a href="#ָ����ʹ����ʽ" class="headerlink" title="ָ����ʹ����ʽ"></a>ָ����ʹ����ʽ</h3><ul>
-<li>ng-xxx �����Ա��������Ǳ�׼�ж���������</li>
-<li>�ܶ��������޷�ͨ���﷨У��</li>
-<li>HTML5 ������չ�����ԣ��� <code>data-</code> ��ͷ</li>
-<li>�� ng �п���ʹ�� <code>data-ng-</code> ��Ϊǰ׺������ҳ�� HTML5 ��Ч</li>
-<li>����Ч����ͬ</li>
+<h2 id="指令：Directive"><a href="#指令：Directive" class="headerlink" title="指令：Directive"></a>指令：Directive</h2><p>AngularJS 通过被称为 指令 的新属性来扩展 HTML，<br>具体表现形式一般为带有前缀 <code>ng-xxx</code> 的 HTML 属性。</p>
+<h3 id="指令的使用形式"><a href="#指令的使用形式" class="headerlink" title="指令的使用形式"></a>指令的使用形式</h3><ul>
+<li>ng-xxx 的属性本身并不是标准中定义的属性</li>
+<li>很多情况下无法通过语法校验</li>
+<li>HTML5 允许扩展的属性，以 <code>data-</code> 开头</li>
+<li>在 ng 中可以使用 <code>data-ng-</code> 作为前缀来让网页对 HTML5 有效</li>
+<li>二者效果相同</li>
 </ul>
-<h3 id="����ָ��"><a href="#����ָ��" class="headerlink" title="����ָ��"></a>����ָ��</h3><p>AngularJS �����˺ܶ�ָ�������ǿ HTML��������һЩ��������ָ���Ľ��ܡ�</p>
+<h3 id="内置指令"><a href="#内置指令" class="headerlink" title="内置指令"></a>内置指令</h3><p>AngularJS 内置了很多指令，用来增强 HTML，以下是一些常用内置指令的介绍。</p>
 <ul>
 <li>ngApp</li>
 <li>ngController</li>
@@ -81,7 +81,7 @@
 <li>ng-non-bindable</li>
 <li>ngBindHtml</li>
 <li>ngRepeat<ul>
-<li>��ͨ�����ظ���������</li>
+<li>普通数据重复报错问题</li>
 </ul>
 </li>
 <li>ng-class</li>
@@ -89,17 +89,17 @@
 <li>ng-class-odd</li>
 <li>ng-hide-show-if-switch</li>
 <li>ng-src</li>
-<li>ng-checked : ��ѡ/��ѡ�Ƿ�ѡ�У�ֻ�ǵ�����������</li>
-<li>ng-disabled : �Ƿ�����</li>
-<li>ng-readonly : �Ƿ�ֻ��</li>
-<li>ng-selected : �Ƿ�ѡ�У�ֻ�ǵ������ݰ���</li>
-<li>ng-click �����굥��</li>
-<li>ng-blur ��ʧȥ����</li>
-<li>ng-focus ���õ�����</li>
-<li>ng-change �������ı�</li>
-<li>ng-copy ����������</li>
-<li>ng-dblclick ������˫��</li>
-<li>ng-submit�������ύ</li>
+<li>ng-checked : 单选/复选是否选中，只是单向绑定数据</li>
+<li>ng-disabled : 是否禁用</li>
+<li>ng-readonly : 是否只读</li>
+<li>ng-selected : 是否选中，只是单向数据绑定</li>
+<li>ng-click ：鼠标单击</li>
+<li>ng-blur ：失去焦点</li>
+<li>ng-focus ：得到焦点</li>
+<li>ng-change ：发生改变</li>
+<li>ng-copy ：拷贝完成</li>
+<li>ng-dblclick ：鼠标双击</li>
+<li>ng-submit：表单提交</li>
 <li>ng-copy</li>
 <li>ng-cut</li>
 <li>ng-paste</li>
@@ -112,24 +112,24 @@
 <li>ng-mouseup</li>
 </ul>
 <hr>
-<h2 id="��������Controller"><a href="#��������Controller" class="headerlink" title="��������Controller"></a>��������Controller</h2><ul>
-<li>ng �еĿ����������� scope ���в���<ul>
-<li>������ʼ�����ݺͶ����¼���Ӧ������</li>
+<h2 id="控制器：Controller"><a href="#控制器：Controller" class="headerlink" title="控制器：Controller"></a>控制器：Controller</h2><ul>
+<li>ng 中的控制器用来对 scope 进行操作<ul>
+<li>包括初始化数据和定义事件响应函数等</li>
 </ul>
 </li>
-<li>ng ��������ҵ���߼�������ͼ���Ĺؼ�</li>
-<li>controller ���� scope��View ��չ�� scope ������</li>
-<li>��ͳǰ�˳����д������ӵ� DOM �����߼�����ת���ɶ� scope �Ĳ���</li>
+<li>ng 用来解耦业务逻辑层和视图层的关键</li>
+<li>controller 操作 scope，View 则展现 scope 的内容</li>
+<li>传统前端程序中大量复杂的 DOM 操作逻辑都被转变成对 scope 的操作</li>
 </ul>
-<h3 id="���������������ַ�ʽ"><a href="#���������������ַ�ʽ" class="headerlink" title="���������������ַ�ʽ"></a>���������������ַ�ʽ</h3><p>��һ�֣���ͳ��ʽ��ʹ��ȫ�ֺ���������������1.5 ֮���ѱ���������</p>
+<h3 id="定义控制器的三种方式"><a href="#定义控制器的三种方式" class="headerlink" title="定义控制器的三种方式"></a>定义控制器的三种方式</h3><p>第一种：传统方式，使用全局函数定义控制器（1.5 之后已被废弃）：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoCtrl</span>(<span class="params">$scope</span>) </span>&#123;</div><div class="line">  <span class="comment">// code here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>�ڶ��֣�������ĳ��ģ����</p>
+<p>第二种：挂载在某个模块下</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'DemoApp'</span>, [])</div><div class="line">  .controller(<span class="string">'DemoCtrl'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</div><div class="line">    <span class="comment">// code here</span></div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
-<p>�����֣�����ȷ�ķ�ʽ</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ������Ϊ����ѹ������ע������ʧ�������ķ�ʽ���ǽ��ڶ�����������һ������</span></div><div class="line">angular.module(<span class="string">'DemoApp'</span>, [])</div><div class="line">  .controller(<span class="string">'DemoCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'$log'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $log</span>) </span>&#123;</div><div class="line">    <span class="comment">// code here</span></div><div class="line">  &#125;])</div></pre></td></tr></table></figure>
-<h3 id="���λ��ֿ�����"><a href="#���λ��ֿ�����" class="headerlink" title="���λ��ֿ�����"></a>���λ��ֿ�����</h3><p>һ��ҳ���У����ղ�ͬ�Ĺ���ҵ�񻮷ֲ�ͬ�Ŀ�������</p>
+<p>第三种：最正确的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 解决因为代码压缩造成注入对象失败问题的方式就是将第二个参数换成一个数组</span></div><div class="line">angular.module(<span class="string">'DemoApp'</span>, [])</div><div class="line">  .controller(<span class="string">'DemoCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'$log'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $log</span>) </span>&#123;</div><div class="line">    <span class="comment">// code here</span></div><div class="line">  &#125;])</div></pre></td></tr></table></figure>
+<h3 id="如何划分控制器"><a href="#如何划分控制器" class="headerlink" title="如何划分控制器"></a>如何划分控制器</h3><p>一个页面中，按照不同的功能业务划分不同的控制器。</p>
 <hr>
-<h2 id="��ͼg�ͣ�View-Model��-scope"><a href="#��ͼg�ͣ�View-Model��-scope" class="headerlink" title="��ͼģ�ͣ�View Model��: $scope"></a>��ͼģ�ͣ�View Model��: $scope</h2><figure class="image-bubble">
+<h2 id="视图模型（View-Model）-scope"><a href="#视图模型（View-Model）-scope" class="headerlink" title="视图模型（View Model）: $scope"></a>视图模型（View Model）: $scope</h2><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="/2017/03/24/Angular命令/$scope.jpg" alt="scope" title="">
@@ -137,86 +137,86 @@
                 <div class="image-caption">scope</div>
             </figure>
 <ul>
-<li>$scope ��������ͼ������֮���Ľ�ˮ��ճ�ϼ�</li>
-<li>��ͼ�Ϳ�����֮������������</li>
-<li>��������ͼ�Ϳ�����֮�䴫������</li>
-<li>������¶����ģ�ͣ����ݡ���Ϊ��</li>
-<li>����ģ�����ݵı仯��������Ӧ�Ķ��� <code>$scope.$watch</code></li>
+<li>$scope 是用来视图和数据之间的胶水、粘合剂</li>
+<li>视图和控制器之间的数据桥梁</li>
+<li>用于在视图和控制器之间传递数据</li>
+<li>用来暴露数据模型（数据、行为）</li>
+<li>监视模型数据的变化，做出相应的动作 <code>$scope.$watch</code></li>
 </ul>
-<h3 id="��������-scope"><a href="#��������-scope" class="headerlink" title="�������� $scope"></a>�������� $scope</h3><p>����ԭ�ͳ������ݺ���Ϊ��</p>
+<h3 id="如何设计-scope"><a href="#如何设计-scope" class="headerlink" title="如何设计 $scope"></a>如何设计 $scope</h3><p>根据原型抽象数据和行为：</p>
 <ul>
-<li>����</li>
-<li>��Ϊ</li>
+<li>数据</li>
+<li>行为</li>
 </ul>
-<h3 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h3><p>ng �ٷ����Լ�����Ϊһ�� MVC ���ܡ�</p>
-<p>�ܶ࿪��ʹ���߰�����֮Ϊ MVVM ���ܡ�</p>
+<h3 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h3><p>ng 官方把自己定义为一个 MVC 框架。</p>
+<p>很多开发使用者把它称之为 MVVM 框架。</p>
 <ul>
-<li>$scope ʵ���Ͼ��� MVVM ����ν�� VM����ͼģ�ͣ�</li>
-<li>��ʽ��Ϊ $scope �� ng �д���ʹ�������ǹ��� c �ĸ�����Ժܶ��˰� ng ��֮Ϊ mvvm ����</li>
-<li>��һ�㵹������ν</li>
+<li>$scope 实际上就是 MVVM 中所谓的 VM（视图模型）</li>
+<li>正式因为 $scope 在 ng 中大量使用甚至盖过了 c 的概念，所以很多人把 ng 称之为 mvvm 框架</li>
+<li>这一点倒是无所谓</li>
 </ul>
-<h3 id="����g��������"><a href="#����g��������" class="headerlink" title="����ģ��������"></a>����ģ��������</h3><hr>
-<h2 id="g�飺Module"><a href="#g�飺Module" class="headerlink" title="ģ�飺Module"></a>ģ�飺Module</h2><ul>
-<li>ģ�鶨����һ��Ӧ�ó���</li>
-<li>ģ����Ӧ�ó����в�ͬ���ֵ�����</li>
-<li>ģ����Ӧ�ÿ�����������</li>
-<li>������ͨ������һ��ģ��</li>
+<h3 id="数据模型作用域"><a href="#数据模型作用域" class="headerlink" title="数据模型作用域"></a>数据模型作用域</h3><hr>
+<h2 id="模块：Module"><a href="#模块：Module" class="headerlink" title="模块：Module"></a>模块：Module</h2><ul>
+<li>模块定义了一个应用程序</li>
+<li>模块是应用程序中不同部分的容器</li>
+<li>模块是应用控制器的容器</li>
+<li>控制器通常属于一个模块</li>
 </ul>
-<p>ng ��ģ������������Ҫ��Ŀ�ľ���Ϊ�˽���ԭ��ȫ�ֶ����Ŀ�������Ⱦ�����⣬<br>����һ��Ŀ�ľ�����������ģ������ʽ���ּܹ���</p>
+<p>ng 中模块的引入最重要的目的就是为了解决原来全局定义的控制器污染的问题，<br>还有一个目的就是让我们以模块的形式划分架构。</p>
 <blockquote>
-<p>����ͨ�� <code>angular.module()</code> ��������ģ��<br><strong>ע��</strong>���÷���ֻ���ڴ�����������ʱ�Żᴴ��ģ�飬����Ϊ��ȡ����ģ��</p>
+<p>可以通过 <code>angular.module()</code> 方法操作模块<br><strong>注意</strong>：该方法只有在传入两个参数时才会创建模块，否则为获取已有模块</p>
 </blockquote>
-<h3 id="����g��"><a href="#����g��" class="headerlink" title="����ģ��"></a>����ģ��</h3><p>����һ��ģ�飺</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ע�⣺����ָ���ڶ����������������ɻ�ȡ�Ѷ�����ģ��</span></div><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>, [])</div></pre></td></tr></table></figure>
-<p>��ȡ����ģ�飺</p>
+<h3 id="定义模块"><a href="#定义模块" class="headerlink" title="定义模块"></a>定义模块</h3><p>定义一个模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注意：必须指定第二个参数，否则变成获取已定义的模块</span></div><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>, [])</div></pre></td></tr></table></figure>
+<p>获取已有模块：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>)</div></pre></td></tr></table></figure>
-<p>������������ģ����ģ�飺</p>
+<p>定义依赖别的模块的模块：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>, [<span class="string">'Module1'</span>, <span class="string">'Module2'</span>])</div></pre></td></tr></table></figure>
-<h3 id="���λ���g��"><a href="#���λ���g��" class="headerlink" title="���λ���ģ��"></a>���λ���ģ��</h3><h3 id="���ض���g��"><a href="#���ض���g��" class="headerlink" title="���ض���ģ��"></a>���ض���ģ��</h3><ul>
+<h3 id="如何划分模块"><a href="#如何划分模块" class="headerlink" title="如何划分模块"></a>如何划分模块</h3><h3 id="加载多个模块"><a href="#加载多个模块" class="headerlink" title="加载多个模块"></a>加载多个模块</h3><ul>
 <li>angular.bootstrap(document, [‘demo’])</li>
 <li>angular.module(‘MainModule’, [‘Module1’, ‘Module2’, ‘Module3’[,ModuleName]])</li>
 </ul>
 <hr>
-<h2 id="��������Filter"><a href="#��������Filter" class="headerlink" title="��������Filter"></a>��������Filter</h2><p>ng ���ṩ�˹��������������þ����������㷽���ĸ�ʽ�����ݵġ�����ʹ���﷨���£�</p>
+<h2 id="过滤器：Filter"><a href="#过滤器：Filter" class="headerlink" title="过滤器：Filter"></a>过滤器：Filter</h2><p>ng 中提供了过滤器规则，作用就是用来帮你方便的格式化数据的。具体使用语法如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; express | filter-name &#125;&#125;</div><div class="line">&#123;&#123; express | filter-name : arg &#125;&#125;</div></pre></td></tr></table></figure>
-<h3 id="���u�����"><a href="#���u�����" class="headerlink" title="���ù�����"></a>���ù�����</h3><ul>
+<h3 id="内置过滤器"><a href="#内置过滤器" class="headerlink" title="内置过滤器"></a>内置过滤器</h3><ul>
 <li>currency<ul>
-<li>�����ϲ���</li>
+<li>基本上不用</li>
 </ul>
 </li>
 <li>number<ul>
-<li>����</li>
+<li>数字</li>
 </ul>
 </li>
 <li>date<ul>
-<li>����</li>
+<li>日期</li>
 </ul>
 </li>
 <li>json</li>
 <li>uppercase<ul>
-<li>��д</li>
+<li>大写</li>
 </ul>
 </li>
 <li>lowercase<ul>
-<li>Сд</li>
+<li>小写</li>
 </ul>
 </li>
 <li>orderBy<ul>
-<li>����</li>
+<li>排序</li>
 </ul>
 </li>
 <li>limitTo<ul>
-<li>����</li>
+<li>限制</li>
 </ul>
 </li>
 <li>filter<ul>
-<li>�����������Ĺ�����</li>
+<li>过滤器里面的过滤器</li>
 </ul>
 </li>
 </ul>
-<h3 id="�Զ���������"><a href="#�Զ���������" class="headerlink" title="�Զ���������"></a>�Զ���������</h3><p>�������ı��ʾ���һ��������������һ�������������㷵��һ���������������ݡ�</p>
+<h3 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h3><p>过滤器的本质就是一个方法：你给它一个参数，它帮你返回一个处理过后的数据。</p>
 <blockquote>
-<p>�ĵ���<a href="https://docs.angularjs.org/api/ng/type/angular.Module" target="_blank" rel="external">https://docs.angularjs.org/api/ng/type/angular.Module</a></p>
+<p>文档：<a href="https://docs.angularjs.org/api/ng/type/angular.Module" target="_blank" rel="external">https://docs.angularjs.org/api/ng/type/angular.Module</a></p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">angular</div><div class="line">  .module(<span class="string">'module'</span>)</div><div class="line">  .filter(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">      <span class="comment">// code here</span></div><div class="line">      <span class="keyword">return</span> xxx</div><div class="line">    &#125;</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
 ]]></content>
@@ -224,12 +224,13 @@
     <summary type="html">
     
       &lt;ul&gt;
-&lt;li&gt;ָ�Directive&lt;ul&gt;
-&lt;li&gt;�� ng �У�ͨ��ָ����չ�� HTML&lt;/li&gt;
-&lt;li&gt;ng ����Ϊ HTML �ṩ��һ���Ѿ���һ�����ܵ����ԣ�����֮Ϊָ��&lt;/li&gt;
+&lt;li&gt;指令：Directive&lt;ul&gt;
+&lt;li&gt;在 ng 中，通过指令扩展了 HTML&lt;/li&gt;
+&lt;li&gt;ng 就是为 HTML 提供了一大堆具有一定功能的属性：被称之为指令&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;ng-ap
+&lt;li&gt;ng-app&lt;ul&gt;
+&lt;li&gt;ng 应用程序启动的
     
     </summary>
     
