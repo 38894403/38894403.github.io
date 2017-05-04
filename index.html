@@ -3,11 +3,6 @@
 <head>
     
 
-    
-
-    
-
-
 
     <meta charset="utf-8">
     
@@ -812,7 +807,12 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+<script>
+    if('serviceWorker' in navigator){
+        console.log(666)
+        navigator.serviceWorker.register('/sw.js');
+    }
+</script>
 
 </body>
 </html>
